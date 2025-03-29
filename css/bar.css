@@ -1,0 +1,26 @@
+.top-bar {
+  background-color: #3a3a3a;
+  color: #fff;
+  padding: 10px 0;
+  font-size: 14px;
+}
+
+.top-bar__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.top-bar__info {
+  display: flex;
+  gap: 20px;
+}
+
+.top-bar__item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}/*# sourceMappingURL=bar.css.map */
