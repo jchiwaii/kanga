@@ -17,57 +17,40 @@ document.addEventListener("DOMContentLoaded", function () {
   // Initial slide should be active
   slides[currentSlide].classList.add("hero__slide--active");
 
-  function goToSlide(index, direction) {
+  function goToSlide(index) {
     if (isAnimating) return;
     isAnimating = true;
 
     const current = currentSlide;
     currentSlide = (index + slides.length) % slides.length;
 
-    // Remove active class but keep it visible during transition
-    slides[current].classList.remove("hero__slide--active");
+    // Apply transition classes
+    slides[current].classList.add("hero__slide--fade-out");
+    slides[currentSlide].classList.add("hero__slide--fade-in");
 
-    // Apply the correct animation classes based on direction
-    if (direction === "next") {
-      slides[current].classList.add("hero__slide--exit-left");
-      slides[currentSlide].classList.add("hero__slide--enter-right");
-    } else {
-      slides[current].classList.add("hero__slide--exit-right");
-      slides[currentSlide].classList.add("hero__slide--enter-left");
-    }
-
-    // Make new slide active and clean up animation classes with improved timing
+    // Make new slide active after fade starts
     setTimeout(() => {
       slides[currentSlide].classList.add("hero__slide--active");
+      slides[current].classList.remove("hero__slide--active");
 
       // Remove animation classes after they've completed
       setTimeout(() => {
-        slides[current].classList.remove(
-          "hero__slide--exit-left",
-          "hero__slide--exit-right"
-        );
-        slides[currentSlide].classList.remove(
-          "hero__slide--enter-right",
-          "hero__slide--enter-left"
-        );
-
-        // Reset animation state with a slight delay
-        setTimeout(() => {
-          isAnimating = false;
-        }, 150);
-      }, 1000); // Increased to match the longer animation duration
-    }, 400); // Give more delay before adding active class
+        slides[current].classList.remove("hero__slide--fade-out");
+        slides[currentSlide].classList.remove("hero__slide--fade-in");
+        isAnimating = false;
+      }, 800); // Match the duration in CSS (0.8s)
+    }, 100);
 
     // Update progress dots
     updateProgressDots();
   }
 
   function nextSlide() {
-    goToSlide(currentSlide + 1, "next");
+    goToSlide(currentSlide + 1);
   }
 
   function prevSlide() {
-    goToSlide(currentSlide - 1, "prev");
+    goToSlide(currentSlide - 1);
   }
 
   // Create progress dots
@@ -84,8 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       dot.addEventListener("click", () => {
         if (isAnimating || index === currentSlide) return;
-        const direction = index > currentSlide ? "next" : "prev";
-        goToSlide(index, direction);
+        goToSlide(index);
         resetAutoSlide();
       });
 
@@ -125,7 +107,7 @@ document.addEventListener("DOMContentLoaded", function () {
     clearInterval(slideInterval);
     slideInterval = setInterval(() => {
       nextSlide();
-    }, 7000); // Longer interval for better viewing
+    }, 7000);
   }
 
   // Add touch swipe support
