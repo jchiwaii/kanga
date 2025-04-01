@@ -181,12 +181,12 @@ html {
   left: 0;
 }
 
-/* Hero section styles */
 .hero {
   position: relative;
   height: 100vh;
   width: 100%;
   overflow: hidden;
+  perspective: 1000px;
 }
 
 .hero__slide {
@@ -198,14 +198,14 @@ html {
   opacity: 0;
   visibility: hidden;
   z-index: 1;
-  transition: visibility 0s 0.8s;
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
 }
 
 .hero__slide--active {
   opacity: 1;
   visibility: visible;
   z-index: 2;
-  transition: visibility 0s;
 }
 
 .hero__content {
@@ -216,6 +216,7 @@ html {
   color: #fff;
   z-index: 3;
   width: 60%;
+  will-change: transform, opacity;
 }
 
 .hero__welcome {
@@ -237,7 +238,7 @@ html {
 .hero__btn {
   display: inline-block;
   padding: 1rem 2rem;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.95);
   color: #000;
   text-decoration: none;
   font-weight: 600;
@@ -247,234 +248,231 @@ html {
   z-index: 1;
   opacity: 0;
   transform: translateY(20px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .hero__btn:before {
   content: "";
   position: absolute;
   top: 0;
-  left: 0;
-  width: 0;
+  left: -100%;
+  width: 100%;
   height: 100%;
-  background-color: #000;
-  transition: width 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-  z-index: -1;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.7s;
 }
 
 .hero__btn:hover {
+  background-color: #000;
   color: #fff;
-  transform: translateY(0) scale(1.05);
+  transform: translateY(-5px);
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.25);
 }
 
 .hero__btn:hover:before {
-  width: 100%;
+  left: 100%;
 }
 
-.hero__nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.2);
-  -webkit-backdrop-filter: blur(5px);
-          backdrop-filter: blur(5px);
-  border: none;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  cursor: pointer;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  font-size: 1.2rem;
-  opacity: 0;
-  transition: opacity 0.3s ease, background 0.3s ease, transform 0.2s ease;
-  overflow: hidden; /* For ripple effect */
-  position: relative;
+/* Horizontal slide animations - adjusted timing */
+.hero__slide--exit-left {
+  animation: slideExitLeft 2.4s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+  visibility: visible;
 }
 
-.hero:hover .hero__nav {
-  opacity: 1;
+.hero__slide--exit-right {
+  animation: slideExitRight 2.4s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+  visibility: visible;
 }
 
-.hero__nav:hover {
-  background: rgba(255, 255, 255, 0.4);
-  transform: translateY(-50%) scale(1.1);
+.hero__slide--enter-right {
+  animation: slideEnterRight 2.4s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+  visibility: visible;
 }
 
-.hero__nav--prev {
-  left: 30px;
+.hero__slide--enter-left {
+  animation: slideEnterLeft 2.4s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+  visibility: visible;
 }
 
-.hero__nav--next {
-  right: 30px;
-}
-
-/* Button ripple effect */
-.hero__nav-ripple {
-  position: absolute;
-  background: rgba(255, 255, 255, 0.7);
-  border-radius: 50%;
-  transform: scale(0);
-  animation: ripple 0.6s linear;
-  pointer-events: none;
-  width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
-}
-
-@keyframes ripple {
-  to {
-    transform: scale(2.5);
+/* Dramatic 3D animations for slide transitions */
+@keyframes slideExitLeft {
+  0% {
+    transform: translateX(0) rotateY(0);
+    opacity: 1;
+    filter: blur(0);
+  }
+  100% {
+    transform: translateX(-15%) rotateY(-10deg);
     opacity: 0;
+    filter: blur(10px);
   }
 }
-/* Progress indicator */
+@keyframes slideExitRight {
+  0% {
+    transform: translateX(0) rotateY(0);
+    opacity: 1;
+    filter: blur(0);
+  }
+  100% {
+    transform: translateX(15%) rotateY(10deg);
+    opacity: 0;
+    filter: blur(10px);
+  }
+}
+@keyframes slideEnterRight {
+  0% {
+    transform: translateX(100%) scale(1.1);
+    opacity: 0;
+    filter: blur(10px);
+  }
+  40% {
+    opacity: 0.3;
+    filter: blur(5px);
+  }
+  100% {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+@keyframes slideEnterLeft {
+  0% {
+    transform: translateX(-100%) scale(1.1);
+    opacity: 0;
+    filter: blur(10px);
+  }
+  40% {
+    opacity: 0.3;
+    filter: blur(5px);
+  }
+  100% {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+/* Text animations for active slide - more dynamic now */
+.hero__slide--active .hero__welcome {
+  animation: textReveal 0.8s cubic-bezier(0.215, 0.61, 0.355, 1) forwards 0.4s;
+}
+
+.hero__slide--active .hero__title {
+  animation: textReveal 0.8s cubic-bezier(0.215, 0.61, 0.355, 1) forwards 0.7s;
+}
+
+.hero__slide--active .hero__btn {
+  animation: buttonReveal 1s cubic-bezier(0.215, 0.61, 0.355, 1) forwards 1.1s;
+}
+
+@keyframes textReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+    filter: blur(15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+@keyframes buttonReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(-5px) scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+/* Progress indicator - enhanced */
 .hero__progress {
   position: absolute;
-  bottom: 30px;
+  bottom: 40px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 10px;
+  gap: 18px;
   z-index: 10;
 }
 
 .hero__progress-dot {
   width: 12px;
   height: 12px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.3);
-  cursor: pointer;
-  transition: all 0.3s ease;
   position: relative;
-  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.hero__progress-dot--active {
-  background: #fff;
-  transform: scale(1.2);
-}
-
-.hero__progress-dot--active::after {
+.hero__progress-dot::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.4);
   border-radius: 50%;
-  animation: pulse 2s infinite;
+  transform: scale(1);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(2.5);
-    opacity: 0;
-  }
-}
-/* Horizontal slide animations with improved easing */
-.hero__slide--exit-left {
-  animation: slideToLeft 0.8s cubic-bezier(0.55, 0.085, 0.68, 0.53) forwards;
-  visibility: visible;
+.hero__progress-dot::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  background: #fff;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.hero__slide--exit-right {
-  animation: slideToRight 0.8s cubic-bezier(0.55, 0.085, 0.68, 0.53) forwards;
-  visibility: visible;
+.hero__progress-dot:hover::before {
+  background: rgba(255, 255, 255, 0.6);
+  transform: scale(1.2);
 }
 
-.hero__slide--enter-right {
-  animation: slideFromRight 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-  visibility: visible;
+.hero__progress-dot--active {
+  transform: scale(1.2);
 }
 
-.hero__slide--enter-left {
-  animation: slideFromLeft 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-  visibility: visible;
+.hero__progress-dot--active::before {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.8);
 }
 
-/* Text animations for active slide with staggered timing */
-.hero__slide--active .hero__welcome {
-  animation: fadeInUp 0.7s cubic-bezier(0.215, 0.61, 0.355, 1) forwards 0.2s;
+.hero__progress-dot--active::after {
+  transform: translate(-50%, -50%) scale(1);
 }
 
-.hero__slide--active .hero__title {
-  animation: fadeInUp 0.7s cubic-bezier(0.215, 0.61, 0.355, 1) forwards 0.5s;
-}
-
-.hero__slide--active .hero__btn {
-  animation: fadeInUp 0.7s cubic-bezier(0.215, 0.61, 0.355, 1) forwards 0.8s;
-}
-
-/* Animation keyframes with modern easing */
-@keyframes slideToLeft {
-  0% {
-    transform: translateX(0);
-    opacity: 1;
-  }
-  100% {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-}
-@keyframes slideToRight {
-  0% {
-    transform: translateX(0);
-    opacity: 1;
-  }
-  100% {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-}
-@keyframes slideFromRight {
-  0% {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-  100% {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-@keyframes slideFromLeft {
-  0% {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-  100% {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-@keyframes fadeInUp {
-  0% {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-/* Enhanced background image effect with zoom */
+/* Enhanced background image effect */
 .hero__slide {
-  background-size: 100% 100%;
-  transition: background-size 10s ease;
+  transition: transform 1.5s ease-out;
+  background-size: cover;
+  background-position: center;
 }
 
 .hero__slide--active {
-  background-size: 110% 110%;
+  animation: zoomBackground 12s linear forwards;
 }
 
+@keyframes zoomBackground {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
 .hero__slide::before {
   content: "";
   position: absolute;
@@ -494,15 +492,5 @@ html {
   }
   .hero__title {
     font-size: 2.5rem;
-  }
-  .hero__nav {
-    width: 40px;
-    height: 40px;
-  }
-  .hero__nav--prev {
-    left: 15px;
-  }
-  .hero__nav--next {
-    right: 15px;
   }
 }/*# sourceMappingURL=main.css.map */

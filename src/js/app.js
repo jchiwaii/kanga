@@ -125,7 +125,7 @@ document.addEventListener("DOMContentLoaded", function () {
     clearInterval(slideInterval);
     slideInterval = setInterval(() => {
       nextSlide();
-    }, 7000); // Longer interval for better viewing
+    }, 9000); // Longer interval for better viewing
   }
 
   // Add touch swipe support

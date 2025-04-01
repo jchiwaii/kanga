@@ -93,12 +93,12 @@
 
 /* Horizontal slide animations - adjusted timing */
 .hero__slide--exit-left {
-  animation: slideExitLeft 0.1s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+  animation: slideExitLeft 2.4s cubic-bezier(0.77, 0, 0.175, 1) forwards;
   visibility: visible;
 }
 
 .hero__slide--exit-right {
-  animation: slideExitRight 0.1s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+  animation: slideExitRight 2.4s cubic-bezier(0.77, 0, 0.175, 1) forwards;
   visibility: visible;
 }
 
