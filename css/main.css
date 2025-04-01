@@ -1,3 +1,7 @@
+body {
+  font-family: "JUST Sans";
+}
+
 *,
 *::before,
 *::after {
@@ -92,7 +96,6 @@ html {
 .header__nav-link {
   text-decoration: none;
   color: #333;
-  font-family: "JUST Sans";
   transition: color 0.4s ease;
   position: relative;
   padding: 5px 0;
@@ -326,7 +329,7 @@ html {
     opacity: 0;
     filter: blur(10px);
   }
-  40% {
+  50% {
     opacity: 0.3;
     filter: blur(5px);
   }
@@ -342,7 +345,7 @@ html {
     opacity: 0;
     filter: blur(10px);
   }
-  40% {
+  50% {
     opacity: 0.3;
     filter: blur(5px);
   }
