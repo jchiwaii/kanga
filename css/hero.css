@@ -45,8 +45,9 @@
 }
 
 .hero__title {
+  font-family: "Gritlen";
   font-size: 3.5rem;
-  font-weight: 700;
+  font-weight: 300;
   margin-bottom: 2rem;
   line-height: 1.2;
   opacity: 0;

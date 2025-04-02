@@ -1,3 +1,113 @@
+// Header scroll behavior and mobile menu toggle
+document.addEventListener("DOMContentLoaded", function () {
+  const header = document.querySelector(".header");
+  const mobileToggle = document.querySelector(".header__mobile-toggle");
+  const navContainer = document.querySelector(".header__nav-container");
+  const closeButton = document.querySelector(".header__close");
+  const overlay = document.createElement("div");
+
+  // Create overlay element
+  overlay.className = "header__overlay";
+  document.body.appendChild(overlay);
+
+  // Add overlay styles
+  const style = document.createElement("style");
+  style.textContent = `
+    .header__overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      z-index: 999;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    .header__overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    body.menu-open {
+      overflow: hidden;
+    }
+    .header__nav-container.active {
+      box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+    }
+  `;
+  document.head.appendChild(style);
+
+  // Toggle mobile menu
+  mobileToggle.addEventListener("click", function () {
+    this.classList.add("active");
+    navContainer.classList.add("active");
+    overlay.classList.add("active");
+    document.body.classList.add("menu-open");
+    this.style.display = "none"; // Hide the hamburger button when menu is open
+  });
+
+  // Close menu on X button click
+  closeButton.addEventListener("click", function () {
+    mobileToggle.classList.remove("active");
+    navContainer.classList.remove("active");
+    overlay.classList.remove("active");
+    document.body.classList.remove("menu-open");
+    mobileToggle.style.display = "flex"; // Show the hamburger button again when menu is closed
+  });
+
+  // Close menu on overlay click
+  overlay.addEventListener("click", function () {
+    mobileToggle.classList.remove("active");
+    navContainer.classList.remove("active");
+    overlay.classList.remove("active");
+    document.body.classList.remove("menu-open");
+    mobileToggle.style.display = "flex"; // Show hamburger button when menu is closed by clicking overlay
+  });
+
+  // Handle responsive display for hamburger menu
+  function handleResponsiveDisplay() {
+    if (window.innerWidth > 768) {
+      // Reset mobile menu when switching to desktop view
+      mobileToggle.style.display = "none";
+      navContainer.classList.remove("active");
+      overlay.classList.remove("active");
+      document.body.classList.remove("menu-open");
+    } else {
+      // Make sure hamburger is visible in mobile view when menu is closed
+      if (!navContainer.classList.contains("active")) {
+        mobileToggle.style.display = "flex";
+      }
+    }
+  }
+
+  // Call once on page load to set initial state
+  handleResponsiveDisplay();
+
+  // Call on window resize
+  window.addEventListener("resize", handleResponsiveDisplay);
+
+  // Handle scroll
+  let lastScrollTop = 0;
+  window.addEventListener("scroll", function () {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    if (scrollTop > 100) {
+      header.classList.add("header--scrolled");
+      if (scrollTop > lastScrollTop) {
+        // Scrolling down
+        header.classList.remove("header--sticky");
+      } else {
+        // Scrolling up
+        header.classList.add("header--sticky");
+      }
+    } else {
+      header.classList.remove("header--scrolled");
+      header.classList.remove("header--sticky");
+    }
+    lastScrollTop = scrollTop;
+  });
+});
+
 document.addEventListener("DOMContentLoaded", function () {
   const slides = document.querySelectorAll(".hero__slide");
   let currentSlide = 0;
