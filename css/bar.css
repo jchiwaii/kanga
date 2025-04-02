@@ -1,7 +1,6 @@
 .top-bar {
   background-color: #1c1c1c;
   border-bottom: 1px solid #2a2a2a;
-  font-family: "Lato", sans-serif;
   font-size: 1rem;
   padding: 0.5rem 0;
   color: #e0e0e0;
@@ -16,37 +15,81 @@
 }
 @media (max-width: 768px) {
   .top-bar__container {
-    flex-direction: column;
     gap: 0.5rem;
   }
 }
 .top-bar__info {
   display: flex;
   gap: 1.5rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.top-bar__info::-webkit-scrollbar {
+  display: none;
 }
 @media (max-width: 768px) {
   .top-bar__info {
-    flex-direction: column;
-    gap: 0.3rem;
-    align-items: center;
+    gap: 0.8rem;
+    flex: 1;
+  }
+}
+@media (max-width: 576px) {
+  .top-bar__info {
+    gap: 0.5rem;
   }
 }
 .top-bar__item {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  flex-shrink: 0;
 }
 .top-bar__item i {
   color: #d4af37;
   font-size: 0.9rem;
+  flex-shrink: 0;
 }
 .top-bar__item span {
   white-space: nowrap;
+}
+@media (max-width: 992px) {
+  .top-bar__item span {
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+@media (max-width: 768px) {
+  .top-bar__item span {
+    max-width: 120px;
+  }
+}
+@media (max-width: 576px) {
+  .top-bar__item span {
+    max-width: 80px;
+  }
+}
+@media (max-width: 480px) {
+  .top-bar__item:nth-child(3) {
+    display: none;
+  }
 }
 .top-bar__social {
   display: flex;
   gap: 0.8rem;
   align-items: center;
+  flex-shrink: 0;
+}
+@media (max-width: 768px) {
+  .top-bar__social {
+    gap: 0.5rem;
+  }
+}
+@media (max-width: 576px) {
+  .top-bar__social {
+    gap: 0.3rem;
+  }
 }
 .top-bar__social-link {
   display: flex;
@@ -62,8 +105,19 @@
   height: 16px;
   transition: opacity 0.2s ease;
 }
+@media (max-width: 576px) {
+  .top-bar__social-link .social-icon {
+    width: 14px;
+    height: 14px;
+  }
+}
 .top-bar__social-link .social-icon:hover {
   opacity: 0.8;
+}
+@media (max-width: 480px) {
+  .top-bar__social-link:nth-child(4), .top-bar__social-link:nth-child(5) {
+    display: none;
+  }
 }
 
 .top-bar ::-moz-selection {

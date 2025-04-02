@@ -2,7 +2,6 @@
 .top-bar {
   background-color: #1c1c1c;
   border-bottom: 1px solid #2a2a2a;
-  font-family: "Lato", sans-serif;
   font-size: 1rem;
   padding: 0.5rem 0;
   color: #e0e0e0;
@@ -16,7 +15,6 @@
     padding: 0 1rem;
 
     @media (max-width: 768px) {
-      flex-direction: column;
       gap: 0.5rem;
     }
   }
@@ -24,11 +22,20 @@
   &__info {
     display: flex;
     gap: 1.5rem;
+    overflow-x: auto; // Allow horizontal scrolling if needed
+    scrollbar-width: none; // Hide scrollbar in Firefox
+    -ms-overflow-style: none; // Hide scrollbar in IE/Edge
+    &::-webkit-scrollbar {
+      display: none; // Hide scrollbar in Chrome/Safari
+    }
 
     @media (max-width: 768px) {
-      flex-direction: column;
-      gap: 0.3rem;
-      align-items: center;
+      gap: 0.8rem;
+      flex: 1; // Take available space
+    }
+
+    @media (max-width: 576px) {
+      gap: 0.5rem;
     }
   }
 
@@ -36,14 +43,37 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    flex-shrink: 0; // Prevent items from shrinking
 
     i {
       color: #d4af37; // Golden color for icons
       font-size: 0.9rem;
+      flex-shrink: 0; // Prevent icon from shrinking
     }
 
     span {
       white-space: nowrap;
+
+      @media (max-width: 992px) {
+        max-width: 150px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      @media (max-width: 768px) {
+        max-width: 120px;
+      }
+
+      @media (max-width: 576px) {
+        max-width: 80px;
+      }
+    }
+
+    // Hide the least important item on very small screens
+    &:nth-child(3) {
+      @media (max-width: 480px) {
+        display: none;
+      }
     }
   }
 
@@ -51,6 +81,15 @@
     display: flex;
     gap: 0.8rem;
     align-items: center;
+    flex-shrink: 0; // Prevent from shrinking
+
+    @media (max-width: 768px) {
+      gap: 0.5rem;
+    }
+
+    @media (max-width: 576px) {
+      gap: 0.3rem;
+    }
   }
 
   &__social-link {
@@ -68,8 +107,21 @@
       height: 16px;
       transition: opacity 0.2s ease;
 
+      @media (max-width: 576px) {
+        width: 14px;
+        height: 14px;
+      }
+
       &:hover {
         opacity: 0.8;
+      }
+    }
+
+    // Hide some social icons on very small screens
+    &:nth-child(4),
+    &:nth-child(5) {
+      @media (max-width: 480px) {
+        display: none;
       }
     }
   }
