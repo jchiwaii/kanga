@@ -115,9 +115,9 @@ document.addEventListener("DOMContentLoaded", function () {
   let isAnimating = false;
 
   // Set background images
-  slides[0].style.backgroundImage = 'url("/src/images/hero.jpg")';
-  slides[1].style.backgroundImage = 'url("/src/images/hero-1.jpg")';
-  slides[2].style.backgroundImage = 'url("/src/images/hero-2.jpg")';
+  slides[0].style.backgroundImage = 'url("/src/images/hero/hero.jpg")';
+  slides[1].style.backgroundImage = 'url("/src/images/hero/hero-1.jpg")';
+  slides[2].style.backgroundImage = 'url("/src/images/hero/hero-2.jpg")';
 
   slides.forEach((slide) => {
     slide.style.backgroundSize = "cover";
@@ -258,4 +258,61 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Start the slideshow
   resetAutoSlide();
+});
+
+// Animation and interaction for the About section
+document.addEventListener("DOMContentLoaded", function () {
+  // Elements to animate
+  const aboutImages = document.querySelector(".about-images");
+  const aboutContent = document.querySelector(".about-content");
+  const featureItems = document.querySelectorAll(".feature-list li");
+
+  // Function to check if element is in viewport
+  function isInViewport(element) {
+    const rect = element.getBoundingClientRect();
+    return (
+      rect.top <=
+        (window.innerHeight || document.documentElement.clientHeight) * 0.8 &&
+      rect.bottom >= 0
+    );
+  }
+
+  // Function to handle animations on scroll
+  function handleScrollAnimations() {
+    if (aboutImages && isInViewport(aboutImages)) {
+      aboutImages.classList.add("appear");
+    }
+
+    if (aboutContent && isInViewport(aboutContent)) {
+      aboutContent.classList.add("appear");
+
+      // Animate feature list items with delay
+      featureItems.forEach((item, index) => {
+        setTimeout(() => {
+          item.classList.add("appear");
+        }, 200 * index);
+      });
+    }
+  }
+
+  // Apply animations on page load
+  setTimeout(() => {
+    handleScrollAnimations();
+  }, 300);
+
+  // Apply animations on scroll
+  window.addEventListener("scroll", handleScrollAnimations);
+
+  // Handle image hover effects
+  const imageContainers = document.querySelectorAll(".image-container");
+
+  imageContainers.forEach((container) => {
+    container.addEventListener("mouseenter", function () {
+      this.querySelector("img").style.transform = "scale(1.05)";
+    });
+
+    container.addEventListener("mouseleave", function () {
+      this.querySelector("img").style.transform = "scale(1)";
+    });
+  });
 });
