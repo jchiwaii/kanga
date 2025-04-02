@@ -1,0 +1,148 @@
+/* Services Section Styles */
+.services-section {
+  width: 100%;
+  padding: 40px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.services-section .services-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  overflow: visible; /* Changed from hidden to ensure all cards are visible */
+}
+
+.services-section .services-carousel {
+  display: flex;
+  transition: transform 0.5s ease;
+  width: 100%; /* Set to 100% to ensure it fits in the container */
+}
+
+.services-section .card {
+  flex: 0 0 33.333%;
+  min-width: 33.333%;
+  padding: 20px;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.services-section .card.active .card-inner {
+  background-color: rgba(230, 192, 123, 0.1); /* Light amber background for active card */
+  border: 1px solid rgba(230, 192, 123, 0.3);
+  transform: scale(1.05); /* Slightly enlarge the active card */
+}
+
+.services-section .card.active h3 {
+  color: #e6c07b; /* Amber color for active card title */
+}
+
+.services-section .card .card-inner {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  text-align: center;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.services-section .card .image-circle {
+  width: 189px;
+  height: 189px;
+  background-color: #ccc;
+  border-radius: 50%;
+  margin: 0 auto 30px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.services-section .card .image-circle::before {
+  content: "";
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  right: -15px;
+  bottom: -15px;
+  border: 2px dashed #ddd;
+  border-radius: 50%;
+}
+
+/* Glare effect on hover */
+.services-section .card .image-circle::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 100%);
+  transform: rotate(-45deg);
+  transition: transform 0.5s ease;
+  opacity: 0;
+}
+
+.services-section .card .image-circle:hover::after {
+  opacity: 1;
+  transform: rotate(45deg) translate(10%, 10%);
+}
+
+.services-section .card h3 {
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 20px;
+  transition: color 0.3s ease;
+}
+
+.services-section .card h3:hover {
+  color: #e6c07b;
+  cursor: pointer;
+}
+
+.services-section .card p {
+  color: #777;
+  line-height: 1.6;
+}
+
+.services-section .dots-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.services-section .dots-container .dot {
+  width: 12px;
+  height: 12px;
+  background-color: #ccc;
+  border-radius: 50%;
+  margin: 0 8px;
+  cursor: pointer;
+  position: relative;
+}
+
+.services-section .dots-container .dot::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border: 2px dashed #ddd;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.services-section .dots-container .dot.active {
+  background-color: #e6c07b;
+}
+
+.services-section .dots-container .dot.active::before {
+  opacity: 1;
+}/*# sourceMappingURL=services.css.map */
