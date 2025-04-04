@@ -316,3 +316,32 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
+// Optional JavaScript for enhanced interactions
+document.addEventListener("DOMContentLoaded", function () {
+  const serviceCards = document.querySelectorAll(".service-card");
+
+  // Add subtle entrance animation when scrolling to the section
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    },
+    {
+      threshold: 0.2,
+    }
+  );
+
+  serviceCards.forEach((card) => {
+    observer.observe(card);
+
+    // Optional: Add click handler for mobile devices or further interaction
+    card.addEventListener("click", function () {
+      // You could expand this to show more details or navigate to a service page
+      console.log("Service clicked:", this.querySelector("h3").textContent);
+    });
+  });
+});
