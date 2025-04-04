@@ -1,0 +1,196 @@
+.services-highlight {
+  background-color: #3c3c4d;
+  color: #fff;
+  padding-bottom: 80px;
+
+  .services-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+
+  // Banner section styling
+  .services-banner {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 60px;
+
+    .banner-image {
+      flex: 0 0 50%;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+    }
+
+    .banner-content {
+      flex: 0 0 50%;
+      background-color: #3c3c4d;
+      padding: 60px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      .banner-subtitle {
+        font-size: 14px;
+        letter-spacing: 2px;
+        margin-bottom: 20px;
+        color: #fff;
+      }
+
+      .banner-title {
+        font-size: 42px;
+        font-weight: 500;
+        line-height: 1.2;
+        margin-bottom: 25px;
+      }
+
+      .banner-description {
+        font-size: 16px;
+        line-height: 1.6;
+        margin-bottom: 30px;
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      .banner-cta {
+        display: inline-block;
+        background-color: #deb887;
+        color: #fff;
+        font-size: 14px;
+        font-weight: 500;
+        letter-spacing: 1px;
+        padding: 15px 30px;
+        text-decoration: none;
+        text-transform: uppercase;
+        transition: background-color 0.3s ease;
+        align-self: flex-start;
+
+        &:hover {
+          background-color: darken(#deb887, 10%);
+        }
+      }
+    }
+  }
+
+  // Features section styling
+  .services-features {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    padding: 0 15px;
+
+    .feature-item {
+      text-align: center;
+      padding: 0 15px;
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        top: 20%;
+        height: 60%;
+        width: 1px;
+        background-color: rgba(222, 184, 135, 0.3);
+      }
+
+      &:last-child::after {
+        display: none;
+      }
+
+      .feature-icon {
+        height: 70px;
+        margin: 0 auto 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+          max-height: 100%;
+          max-width: 100%;
+        }
+      }
+
+      h3 {
+        font-size: 22px;
+        font-weight: 500;
+        margin-bottom: 20px;
+        color: #fff;
+      }
+
+      p {
+        font-size: 15px;
+        line-height: 1.6;
+        color: rgba(255, 255, 255, 0.7);
+      }
+    }
+  }
+}
+
+// Media queries for responsiveness
+@media (max-width: 992px) {
+  .services-highlight {
+    .services-banner {
+      flex-direction: column;
+
+      .banner-image,
+      .banner-content {
+        flex: 0 0 100%;
+      }
+
+      .banner-content {
+        padding: 40px 30px;
+
+        .banner-title {
+          font-size: 36px;
+        }
+      }
+    }
+
+    .services-features {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px 20px;
+
+      .feature-item {
+        &:nth-child(2n)::after {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .services-highlight {
+    padding-bottom: 60px;
+
+    .services-banner {
+      .banner-content {
+        padding: 30px 20px;
+
+        .banner-title {
+          font-size: 30px;
+        }
+
+        .banner-cta {
+          width: 100%;
+          text-align: center;
+        }
+      }
+    }
+
+    .services-features {
+      grid-template-columns: 1fr;
+      gap: 40px;
+
+      .feature-item {
+        &::after {
+          display: none;
+        }
+      }
+    }
+  }
+}
