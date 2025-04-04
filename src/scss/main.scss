@@ -3,11 +3,13 @@
 @import "./base/reset.scss";
 
 @import "./components/bar.scss";
+@import "./components/gallery.scss";
 @import "./components/header.scss";
 
 @import "./layout/counter.scss";
-@import "./layout/hero.scss";
 @import "./layout/highlights.scss";
 
 @import "./pages/about.scss";
+@import "./pages/contact.scss";
+@import "./pages/hero.scss";
 @import "./pages/services.scss";

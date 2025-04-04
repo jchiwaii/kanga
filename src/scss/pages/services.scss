@@ -1,6 +1,6 @@
 .services-section {
-  padding: 80px 0;
-  background-color: #f8f8f8;
+  padding: 100px 0;
+  background-color: #fafafa;
 
   .container {
     max-width: 1200px;
@@ -10,43 +10,33 @@
 
   .section-title {
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 70px;
     font-size: 36px;
-    font-weight: 500;
+    font-weight: 300;
     color: #333;
     position: relative;
+    letter-spacing: 2px;
+    text-transform: uppercase;
 
     &:after {
       content: "";
       display: block;
-      width: 60px;
-      height: 3px;
-      background-color: #e67e22; // Kanga brand color (adjust as needed)
-      margin: 15px auto 0;
+      width: 40px;
+      height: 1px;
+      background-color: #333;
+      margin: 20px auto 0;
     }
   }
 
   .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
   }
 
   .service-card {
     background-color: #fff;
-    border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-    &:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-
-      .service-image img {
-        transform: scale(1.1);
-      }
-    }
   }
 
   .service-image {
@@ -57,25 +47,26 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.5s ease;
     }
   }
 
   .service-info {
-    padding: 25px 20px;
+    padding: 30px 25px;
 
     h3 {
       font-size: 22px;
-      margin-bottom: 12px;
+      margin-bottom: 15px;
       color: #333;
-      font-weight: 500;
+      font-weight: 300;
+      letter-spacing: 1px;
     }
 
     p {
       font-size: 16px;
       color: #666;
-      line-height: 1.6;
+      line-height: 1.8;
       margin: 0;
+      font-weight: 300;
     }
   }
 }
@@ -83,27 +74,27 @@
 // Media queries for responsiveness
 @media (max-width: 768px) {
   .services-section {
-    padding: 60px 0;
+    padding: 80px 0;
 
     .section-title {
       font-size: 30px;
-      margin-bottom: 40px;
+      margin-bottom: 50px;
     }
 
     .services-grid {
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
     }
   }
 }
 
 @media (max-width: 480px) {
   .services-section {
-    padding: 40px 0;
+    padding: 60px 0;
 
     .section-title {
       font-size: 26px;
-      margin-bottom: 30px;
+      margin-bottom: 40px;
     }
 
     .service-info {
