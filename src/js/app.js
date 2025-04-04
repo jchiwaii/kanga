@@ -345,3 +345,69 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Function to animate counting up to target number
+  function animateCounter(element, target) {
+    // Get target number from data attribute
+    const targetNumber = parseInt(target);
+    // Set starting number
+    let currentNumber = 0;
+    // Set higher speed for larger numbers
+    const duration = targetNumber > 1000 ? 2000 : 1500;
+    // Calculate increment step based on target size and duration
+    const incrementStep = targetNumber / (duration / 16);
+
+    // Start animation
+    const counter = setInterval(() => {
+      currentNumber += incrementStep;
+
+      // If we reached or exceeded the target, set to final value and clear interval
+      if (currentNumber >= targetNumber) {
+        element.textContent = targetNumber;
+        clearInterval(counter);
+      } else {
+        // Round to make counting look natural
+        element.textContent = Math.floor(currentNumber);
+      }
+    }, 16); // ~60fps
+  }
+
+  // Function to check if element is in viewport
+  function isInViewport(element) {
+    const rect = element.getBoundingClientRect();
+    return (
+      rect.top >= 0 &&
+      rect.left >= 0 &&
+      rect.bottom <=
+        (window.innerHeight || document.documentElement.clientHeight) &&
+      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+  }
+
+  // Get all counter elements
+  const counters = document.querySelectorAll(".stat-number");
+
+  // Start animation when elements come into view
+  function startCountersIfVisible() {
+    counters.forEach((counter) => {
+      // Only start if the counter hasn't been animated yet
+      if (!counter.classList.contains("counted") && isInViewport(counter)) {
+        counter.classList.add("counted");
+        animateCounter(counter, counter.getAttribute("data-target"));
+      }
+    });
+  }
+
+  // Check on load and scroll
+  startCountersIfVisible();
+  window.addEventListener("scroll", startCountersIfVisible);
+
+  // Force restart counters on page refresh
+  window.addEventListener("beforeunload", function () {
+    counters.forEach((counter) => {
+      counter.textContent = "0";
+      counter.classList.remove("counted");
+    });
+  });
+});
