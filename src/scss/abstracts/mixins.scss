@@ -1,0 +1,57 @@
+// Button mixin for reusable styling
+@mixin luxury-button {
+  position: relative;
+  background-color: #deb887;
+  color: white;
+  text-decoration: none;
+  padding: 1.5rem 2.5rem;
+  font-weight: bold;
+  letter-spacing: 0.1rem;
+  overflow: hidden;
+  z-index: 1;
+  border-radius: 0.4rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: #333;
+    transition: all 0.5s ease;
+    z-index: -1;
+  }
+
+  &:hover {
+    transform: translateY(-0.3rem);
+    box-shadow: 0 1rem 2rem rgba(222, 184, 135, 0.3);
+
+    &::before {
+      left: 0;
+    }
+  }
+}
+
+// Hover effect mixin for navigation links
+@mixin nav-hover-effect {
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 0.2rem;
+    background-color: #deb887;
+    transition: width 0.4s ease;
+  }
+
+  &:hover {
+    color: #deb887;
+
+    &::before {
+      width: 100%;
+    }
+  }
+}

@@ -31,7 +31,7 @@
   top: 50%;
   left: 10%;
   transform: translateY(-50%);
-  color: #fff;
+  color: #e0e0e0;
   z-index: 3;
   width: 60%;
   will-change: transform, opacity;
@@ -222,12 +222,39 @@
 }
 
 /* Media queries for responsiveness */
+@media (max-width: 950px) {
+  .hero__title {
+    font-size: 6rem;
+  }
+  .hero__welcome {
+    font-size: 1.2rem;
+  }
+}
 @media (max-width: 768px) {
-  .hero__content {
-    left: 5%;
-    width: 90%;
+  .hero__welcome {
+    font-size: 1.2rem;
   }
   .hero__title {
-    font-size: 2.5rem;
+    font-size: 5.5rem;
+  }
+}
+@media (max-width: 660px) {
+  .hero__title {
+    font-size: 5rem;
+  }
+}
+@media (max-width: 570px) {
+  .hero__title {
+    font-size: 4.5rem;
+  }
+}
+@media (max-width: 480px) {
+  .hero__title {
+    font-size: 4rem;
+  }
+}
+@media (max-width: 375px) {
+  .hero__title {
+    font-size: 3rem;
   }
 }/*# sourceMappingURL=hero.css.map */
