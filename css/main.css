@@ -1502,95 +1502,161 @@ textarea.form-control {
   }
 }
 .services-section {
-  padding: 100px 0;
-  background-color: #fafafa;
+  position: relative;
+  padding: 10rem 0;
+  overflow: hidden;
+}
+.services-section .services-bg-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/src/images/services-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.05;
+  z-index: -1;
 }
 .services-section .container {
-  max-width: 1200px;
+  max-width: 120rem;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 1;
 }
 .services-section .section-title {
-  font-family: "Gritlen";
+  font-family: "Gritlen", serif;
   text-align: center;
-  margin-bottom: 70px;
-  font-size: 36px;
-  font-weight: 300;
+  margin-bottom: 7rem;
+  font-size: 3.6rem;
+  font-weight: 400;
   color: #333;
-  position: relative;
-  letter-spacing: 2px;
-  text-transform: uppercase;
+  letter-spacing: 0.2rem;
 }
-.services-section .section-title:after {
-  content: "";
-  display: block;
-  width: 40px;
-  height: 1px;
-  background-color: #333;
-  margin: 20px auto 0;
+.services-section .services-carousel {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
 }
-.services-section .services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
+@media (min-width: 768px) {
+  .services-section .services-carousel {
+    flex-wrap: nowrap;
+    gap: 4rem;
+  }
 }
 .services-section .service-card {
-  background-color: #fff;
-  overflow: hidden;
+  flex: 1;
+  min-width: 28rem;
+  max-width: 30rem;
+  text-align: center;
+  padding: 1rem;
+  transition: all 0.3s ease;
 }
-.services-section .service-image {
-  height: 220px;
-  overflow: hidden;
+.services-section .service-card.active {
+  background-color: #f8f7f5;
+  padding: 2rem;
+  padding-bottom: 4rem;
+  margin-top: -1rem;
+  box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.05);
 }
-.services-section .service-image img {
+@media (max-width: 768px) {
+  .services-section .service-card {
+    max-width: 100%;
+  }
+  .services-section .service-card.active {
+    padding: 1.5rem;
+    margin-top: 0;
+  }
+}
+.services-section .service-image-container {
+  position: relative;
+  margin: 0 auto 2rem;
+  width: 18.9rem;
+  height: 18.9rem;
+}
+.services-section .service-image-container::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 24rem;
+  height: 24rem;
+  border: 0.1rem dashed #ddd;
+  border-radius: 50%;
+}
+.services-section .service-image-circle {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 50%;
+  background: #ccc;
+}
+.services-section .service-image-circle img {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
 }
-.services-section .service-info {
-  padding: 30px 25px;
-}
-.services-section .service-info h3 {
-  font-size: 22px;
-  margin-bottom: 15px;
+.services-section .service-title {
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
   color: #333;
-  font-weight: 300;
-  letter-spacing: 1px;
+  font-weight: 400;
+  letter-spacing: 0.1rem;
 }
-.services-section .service-info p {
-  font-size: 16px;
+.services-section .service-description {
+  font-size: 1.6rem;
   color: #666;
   line-height: 1.8;
   margin: 0;
   font-weight: 300;
 }
+.services-section .carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-top: 5rem;
+}
+.services-section .carousel-dots .dot {
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 50%;
+  background-color: #ddd;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.services-section .carousel-dots .dot.active {
+  background-color: #b88a5e;
+  transform: scale(1.2);
+}
 
 @media (max-width: 768px) {
   .services-section {
-    padding: 80px 0;
+    padding: 8rem 0;
   }
   .services-section .section-title {
-    font-size: 30px;
-    margin-bottom: 50px;
+    font-size: 3rem;
+    margin-bottom: 5rem;
   }
-  .services-section .services-grid {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
+  .services-section .services-carousel {
+    gap: 3rem;
   }
 }
 @media (max-width: 480px) {
   .services-section {
-    padding: 60px 0;
+    padding: 6rem 0;
   }
   .services-section .section-title {
-    font-size: 26px;
-    margin-bottom: 40px;
+    font-size: 2.6rem;
+    margin-bottom: 4rem;
   }
-  .services-section .service-info h3 {
-    font-size: 20px;
+  .services-section .service-title {
+    font-size: 2rem;
   }
-  .services-section .service-info p {
-    font-size: 15px;
+  .services-section .service-description {
+    font-size: 1.5rem;
   }
 }/*# sourceMappingURL=main.css.map */
