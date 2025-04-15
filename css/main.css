@@ -676,7 +676,7 @@ html {
 }
 .stats-counter .stat-number {
   font-size: 72px;
-  font-weight: 700;
+  font-weight: 400;
   margin-bottom: 10px;
   line-height: 1;
 }
@@ -687,8 +687,8 @@ html {
   content: "+";
 }
 .stats-counter .stat-label {
-  font-size: 22px;
-  font-weight: 500;
+  font-size: 2rem;
+  font-weight: 300;
 }
 
 @media (max-width: 991px) {
