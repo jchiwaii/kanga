@@ -1,5 +1,6 @@
 .stats-counter {
-  padding: 80px 0;
+  padding: 70px 0;
+  background-color: #f9f7f4;
 
   .container {
     max-width: 1200px;
@@ -11,47 +12,147 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
+
+    @media (max-width: 1100px) {
+      gap: 15px;
+    }
+
+    @media (max-width: 991px) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    @media (max-width: 576px) {
+      grid-template-columns: 1fr;
+      gap: 15px;
+      max-width: 320px;
+      margin: 0 auto;
+    }
   }
 
   .stat-item {
-    height: 340px;
+    height: 280px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 30px;
+    padding: 25px 20px;
     text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      width: 20px;
+      height: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.5);
+      border-left: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      right: -10px;
+      width: 20px;
+      height: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+      border-right: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    @media (max-width: 1100px) {
+      height: 260px;
+      padding: 20px 15px;
+    }
+
+    @media (max-width: 991px) {
+      height: 240px;
+    }
+
+    @media (max-width: 768px) {
+      height: 220px;
+    }
+
+    @media (max-width: 576px) {
+      height: 200px;
+      padding: 20px 15px;
+    }
 
     &.silver-bg {
-      background-color: #bdbdbd;
+      background-color: rgba(189, 189, 189, 0.9);
       color: #ffffff;
     }
 
     &.gold-bg {
-      background-color: #deb887;
+      background-color: rgba(222, 184, 135, 0.9);
       color: #ffffff;
     }
   }
 
   .stat-icon {
     margin-bottom: 15px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.6s ease forwards;
+    animation-delay: 0.2s;
 
     img {
-      width: 60px;
-      height: 60px;
+      width: 50px;
+      height: 50px;
       object-fit: contain;
+      filter: brightness(0) invert(1);
+      opacity: 0.85;
+
+      @media (max-width: 991px) {
+        width: 45px;
+        height: 45px;
+      }
+
+      @media (max-width: 576px) {
+        width: 40px;
+        height: 40px;
+      }
     }
   }
 
   .stat-number {
-    font-size: 72px;
-    font-weight: 400;
+    font-size: 58px;
+    font-weight: 300;
     margin-bottom: 10px;
     line-height: 1;
+    letter-spacing: -1px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.6s ease forwards;
+    animation-delay: 0.4s;
+
+    @media (max-width: 1100px) {
+      font-size: 52px;
+    }
+
+    @media (max-width: 991px) {
+      font-size: 48px;
+    }
+
+    @media (max-width: 768px) {
+      font-size: 44px;
+    }
+
+    @media (max-width: 576px) {
+      font-size: 42px;
+    }
 
     &:after {
       content: "";
-
       .stat-item:last-child & {
         content: "+";
       }
@@ -59,51 +160,37 @@
   }
 
   .stat-label {
-    font-size: 2rem;
+    font-size: 1.6rem;
     font-weight: 300;
-  }
-}
+    letter-spacing: 1px;
+    opacity: 0.9;
+    transform: translateY(20px);
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards;
+    animation-delay: 0.6s;
 
-// Media queries for responsiveness
-@media (max-width: 991px) {
-  .stats-counter {
-    .stats-grid {
-      grid-template-columns: repeat(2, 1fr);
+    @media (max-width: 991px) {
+      font-size: 1.5rem;
     }
 
-    .stat-item {
-      height: 300px;
-    }
-
-    .stat-number {
-      font-size: 60px;
-    }
-
-    .stat-label {
-      font-size: 20px;
+    @media (max-width: 576px) {
+      font-size: 1.4rem;
     }
   }
 }
 
-@media (max-width: 576px) {
-  .stats-counter {
-    padding: 60px 0;
-
-    .stats-grid {
-      grid-template-columns: 1fr;
-      gap: 15px;
-    }
-
-    .stat-item {
-      height: 250px;
-    }
-
-    .stat-number {
-      font-size: 52px;
-    }
-
-    .stat-label {
-      font-size: 18px;
-    }
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
+}
+
+// Additional refinement for borders on hover
+.stats-counter .stat-item:hover::before,
+.stats-counter .stat-item:hover::after {
+  width: 25px;
+  height: 25px;
+  opacity: 0.8;
+  transition: all 0.3s ease;
 }

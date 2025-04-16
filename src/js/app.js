@@ -273,6 +273,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // Optional JavaScript for enhanced interactions
+// This code adds subtle animations and interactions to the service cards
 document.addEventListener("DOMContentLoaded", function () {
   const serviceCards = document.querySelectorAll(".service-card");
 
@@ -301,62 +302,95 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+// Counter animation for stats section
+// This code animates the numbers in the stats section when they come into view
+
 document.addEventListener("DOMContentLoaded", function () {
-  // Function to animate counting up to target number
+  // Function to animate counting up to target number with easing
   function animateCounter(element, target) {
     // Get target number from data attribute
     const targetNumber = parseInt(target);
     // Set starting number
     let currentNumber = 0;
-    // Set higher speed for larger numbers
-    const duration = targetNumber > 1000 ? 2000 : 1500;
-    // Calculate increment step based on target size and duration
-    const incrementStep = targetNumber / (duration / 16);
+    // Set duration based on number size for smoother animation
+    const duration = targetNumber > 1000 ? 2500 : 2000;
+    // Use easeOutQuad for more elegant counting
+    const startTime = performance.now();
 
-    // Start animation
-    const counter = setInterval(() => {
-      currentNumber += incrementStep;
+    function easeOutQuad(t) {
+      return t * (2 - t);
+    }
 
-      // If we reached or exceeded the target, set to final value and clear interval
-      if (currentNumber >= targetNumber) {
-        element.textContent = targetNumber;
-        clearInterval(counter);
+    function updateCounter(timestamp) {
+      const elapsed = timestamp - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const easedProgress = easeOutQuad(progress);
+
+      currentNumber = Math.floor(easedProgress * targetNumber);
+      element.textContent = currentNumber;
+
+      if (progress < 1) {
+        requestAnimationFrame(updateCounter);
       } else {
-        // Round to make counting look natural
-        element.textContent = Math.floor(currentNumber);
+        element.textContent = targetNumber;
+        // Add plus sign to the last stat if needed
+        if (
+          element.closest(".stat-item") ===
+          document.querySelector(".stat-item:last-child .stat-number")
+        ) {
+          element.textContent += "+";
+        }
       }
-    }, 16); // ~60fps
+    }
+
+    requestAnimationFrame(updateCounter);
   }
 
-  // Function to check if element is in viewport
-  function isInViewport(element) {
+  // Enhanced viewport detection with margin
+  function isInViewport(element, margin = 100) {
     const rect = element.getBoundingClientRect();
     return (
-      rect.top >= 0 &&
-      rect.left >= 0 &&
-      rect.bottom <=
-        (window.innerHeight || document.documentElement.clientHeight) &&
-      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+      rect.top <= window.innerHeight + margin &&
+      rect.bottom >= -margin &&
+      rect.left <= window.innerWidth + margin &&
+      rect.right >= -margin
     );
   }
 
   // Get all counter elements
   const counters = document.querySelectorAll(".stat-number");
+  const statItems = document.querySelectorAll(".stat-item");
 
-  // Start animation when elements come into view
-  function startCountersIfVisible() {
-    counters.forEach((counter) => {
-      // Only start if the counter hasn't been animated yet
-      if (!counter.classList.contains("counted") && isInViewport(counter)) {
-        counter.classList.add("counted");
-        animateCounter(counter, counter.getAttribute("data-target"));
+  // Function to handle intersection observations
+  function handleIntersect(entries, observer) {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const counter = entry.target.querySelector(".stat-number");
+        if (!counter.classList.contains("counted")) {
+          counter.classList.add("counted");
+          // Small delay for better visual effect when multiple counters appear
+          setTimeout(() => {
+            animateCounter(counter, counter.getAttribute("data-target"));
+          }, 300);
+        }
+        observer.unobserve(entry.target);
       }
     });
   }
 
-  // Check on load and scroll
-  startCountersIfVisible();
-  window.addEventListener("scroll", startCountersIfVisible);
+  // Set up intersection observer for better performance
+  const options = {
+    root: null,
+    rootMargin: "0px",
+    threshold: 0.2,
+  };
+
+  const observer = new IntersectionObserver(handleIntersect, options);
+
+  // Observe all stat items
+  statItems.forEach((item) => {
+    observer.observe(item);
+  });
 
   // Force restart counters on page refresh
   window.addEventListener("beforeunload", function () {
