@@ -366,3 +366,37 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
+// Services
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Animate services on load
+  const serviceCards = document.querySelectorAll(".service-card");
+
+  // Function to check if element is in viewport
+  function isInViewport(element) {
+    const rect = element.getBoundingClientRect();
+    return (
+      rect.top <=
+        (window.innerHeight || document.documentElement.clientHeight) &&
+      rect.bottom >= 0
+    );
+  }
+
+  // Function to add appear class when element is in viewport
+  function addAppearClass() {
+    serviceCards.forEach((card) => {
+      if (isInViewport(card)) {
+        card.classList.add("appear");
+      }
+    });
+  }
+
+  // Add appear class on page load
+  setTimeout(() => {
+    addAppearClass();
+  }, 100);
+
+  // Add appear class on scroll
+  window.addEventListener("scroll", addAppearClass);
+});
