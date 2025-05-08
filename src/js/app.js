@@ -434,3 +434,76 @@ document.addEventListener("DOMContentLoaded", function () {
   // Add appear class on scroll
   window.addEventListener("scroll", addAppearClass);
 });
+
+// Form
+
+document.addEventListener("DOMContentLoaded", function () {
+  const contactForm = document.getElementById("contactForm");
+  const nameInput = document.getElementById("name");
+  const emailInput = document.getElementById("email");
+  const phoneInput = document.getElementById("phone");
+  const subjectInput = document.getElementById("subject");
+  const messageInput = document.getElementById("message");
+
+  const nameError = document.getElementById("nameError");
+  const emailError = document.getElementById("emailError");
+  const phoneError = document.getElementById("phoneError");
+  const subjectError = document.getElementById("subjectError");
+  const messageError = document.getElementById("messageError");
+
+  contactForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+    let isValid = true;
+
+    // Reset error messages
+    nameError.textContent = "";
+    emailError.textContent = "";
+    phoneError.textContent = "";
+    subjectError.textContent = "";
+    messageError.textContent = "";
+
+    // Validate name
+    if (nameInput.value.trim() === "") {
+      nameError.textContent = "Please enter your name";
+      isValid = false;
+    }
+
+    // Validate email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (emailInput.value.trim() === "") {
+      emailError.textContent = "Please enter your email";
+      isValid = false;
+    } else if (!emailRegex.test(emailInput.value.trim())) {
+      emailError.textContent = "Please enter a valid email address";
+      isValid = false;
+    }
+
+    // Validate phone
+    const phoneRegex = /^[0-9\-\+\s\(\)]{7,20}$/;
+    if (phoneInput.value.trim() === "") {
+      phoneError.textContent = "Please enter your phone number";
+      isValid = false;
+    } else if (!phoneRegex.test(phoneInput.value.trim())) {
+      phoneError.textContent = "Please enter a valid phone number";
+      isValid = false;
+    }
+
+    // Validate subject
+    if (subjectInput.value.trim() === "") {
+      subjectError.textContent = "Please enter a subject";
+      isValid = false;
+    }
+
+    // Validate message
+    if (messageInput.value.trim() === "") {
+      messageError.textContent = "Please enter your message";
+      isValid = false;
+    }
+
+    if (isValid) {
+      // Form is valid, you can submit it here
+      alert("Form submitted successfully!");
+      contactForm.reset();
+    }
+  });
+});

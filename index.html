@@ -461,75 +461,88 @@
         </div>
       </div>
     </section>
+
     <section class="contact-section">
       <div class="container">
         <div class="contact-wrapper">
           <div class="contact-form-column">
-            <h2 class="contact-title">Send us a Message<br />Anytime</h2>
-
-            <form class="contact-form">
+            <h2 class="contact-title">Contact Our Team</h2>
+            <form class="contact-form" id="contactForm" novalidate>
               <div class="form-row">
                 <div class="form-group">
                   <input
                     type="text"
                     class="form-control"
                     placeholder="Your Name"
+                    id="name"
+                    required
                   />
+                  <div class="error-message" id="nameError"></div>
                 </div>
                 <div class="form-group">
                   <input
                     type="email"
                     class="form-control"
                     placeholder="Your Email"
+                    id="email"
+                    required
                   />
+                  <div class="error-message" id="emailError"></div>
                 </div>
               </div>
-
               <div class="form-row">
                 <div class="form-group">
                   <input
                     type="tel"
                     class="form-control"
                     placeholder="Phone Number"
+                    id="phone"
+                    required
                   />
+                  <div class="error-message" id="phoneError"></div>
                 </div>
                 <div class="form-group">
                   <input
                     type="text"
                     class="form-control"
                     placeholder="Subject"
+                    id="subject"
+                    required
                   />
+                  <div class="error-message" id="subjectError"></div>
                 </div>
               </div>
-
               <div class="form-group full-width">
                 <textarea
                   class="form-control"
                   rows="6"
-                  placeholder="Write a message"
+                  placeholder="Tell us about your tailoring needs"
+                  id="message"
+                  required
                 ></textarea>
+                <div class="error-message" id="messageError"></div>
               </div>
-
               <div class="form-submit">
-                <button type="submit" class="submit-btn">SEND A MESSAGE</button>
+                <button type="submit" class="submit-btn">
+                  Schedule Consultation
+                </button>
               </div>
             </form>
           </div>
-
           <div class="contact-info-column">
             <div class="contact-person">
               <div class="person-image">
-                <img src="/src/images/tailor.jpg" alt="Kevin Martin" />
+                <img src="/src/images/tailor.jpg" alt="Mercy Jane" />
               </div>
-              <h3 class="person-name">Kevin Martin</h3>
-              <p class="person-title">Expert Tayler</p>
+              <h3 class="person-name">Mercy Jane</h3>
+              <p class="person-title">Master Tailor</p>
             </div>
-
             <div class="contact-text">
               <p>
-                Quisque id tempus nibh, in varius nunc. Mauris non convallis
-                nulla. Morbi at urna hendrerit, finibus justo a, pellentesque
-                diam. Vivamus lacus metus, placerat ullamcorper turpis et.
+                With over 15 years of experience in bespoke tailoring, Mercy
+                brings unparalleled craftsmanship to every garment. Her
+                attention to detail and commitment to perfection ensures each
+                suit reflects your unique style and personality.
               </p>
             </div>
           </div>

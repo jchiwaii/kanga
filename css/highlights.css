@@ -46,7 +46,7 @@
 }
 .services-highlight .services-banner .banner-content .banner-subtitle::before {
   content: "";
-  width: 4rem;
+  width: 7rem;
   height: 1px;
   background-color: #deb887;
   margin-right: 1.5rem;
