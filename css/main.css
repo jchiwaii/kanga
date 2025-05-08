@@ -2028,14 +2028,13 @@ html {
   }
 }
 .services-section .section-title {
-  font-family: "Gritlen", serif;
+  font-family: "JUST Sans", serif;
   text-align: center;
   margin-bottom: 7rem;
   font-size: 3.6rem;
   font-weight: 300;
   color: #333;
   position: relative;
-  letter-spacing: 0.2rem;
 }
 @media (max-width: 992px) {
   .services-section .section-title {
@@ -2059,9 +2058,9 @@ html {
 .services-section .section-title:after {
   content: "";
   display: block;
-  width: 4rem;
+  width: 12rem;
   height: 0.1rem;
-  background-color: #333;
+  background-color: #deb887;
   margin: 2rem auto 0;
 }
 @media (max-width: 768px) {
