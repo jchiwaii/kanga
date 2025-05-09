@@ -17,7 +17,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.5); // Made darker from 0.3 to 0.5
 }
 
 .gallery-title-container {
@@ -64,7 +64,32 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.8s ease;
+  /* Removed transform transition */
+}
+
+// Subtle glare effect element
+.glare {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%; /* Narrower width for subtlety */
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.15) 50%,
+    /* Much more subtle opacity */ rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-20deg);
+  opacity: 0;
+  transition: left 2.5s ease, opacity 0.8s ease; /* Slower animation */
+  z-index: 2;
+  pointer-events: none;
+}
+
+.gallery-item:hover .glare {
+  left: 150%; /* Move further to ensure it completes the animation */
+  opacity: 1;
 }
 
 .overlay {
@@ -73,22 +98,25 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0));
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0)
+  ); // Subtle gradient
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   padding: 25px;
   opacity: 0;
-  transition: opacity 0.5s ease;
+  transition: opacity 0.7s ease; // Smoother transition
+  z-index: 1;
 }
 
 .gallery-item:hover .overlay {
   opacity: 1;
 }
 
-.gallery-item:hover img {
-  transform: scale(1.03);
-}
+/* Removed zoom effect on hover */
 
 .overlay h3 {
   color: #fff;
