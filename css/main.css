@@ -867,6 +867,25 @@ html {
     font-size: 2rem;
   }
 }
+body {
+  overflow: hidden; /* Prevent scrolling during load */
+}
+
+body.loaded {
+  overflow: visible; /* Enable scrolling after load */
+}
+
+/* Hide all page content initially */
+.page-content {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+body.loaded .page-content {
+  opacity: 1;
+}
+
+/* Loader styles */
 .loader {
   position: fixed;
   top: 0;
@@ -889,9 +908,10 @@ html {
 .loader__text span {
   display: inline-block;
   color: #fff;
-  font-family: "Rossa";
   font-size: 3rem;
   font-weight: 300;
+  font-family: "Rossa";
+  letter-spacing: 0.1rem;
   animation: textFade 2s infinite;
 }
 .loader__text span:nth-child(1) {

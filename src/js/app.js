@@ -535,44 +535,81 @@ document.addEventListener("DOMContentLoaded", function () {
 // This code creates a loader that shows progress as the page loads
 // and hides it once the page is fully loaded. It also includes a fallback
 // to hide the loader after a set time if the page takes too long to load.
+// Add 'loading' class to html tag immediately
+document.documentElement.classList.add("loading");
+
 document.addEventListener("DOMContentLoaded", function () {
+  // Get loader elements
   const loader = document.getElementById("pageLoader");
   const progressBar = document.querySelector(".loader__progress-bar");
-  let loadProgress = 0;
 
-  // Function to update progress bar
-  function updateProgress() {
-    if (loadProgress < 100) {
-      loadProgress += Math.floor(Math.random() * 15) + 5; // Random progress between 5-20%
-      if (loadProgress > 100) loadProgress = 100;
+  // Set up loading variables
+  let progress = 0;
+  let loadingInterval;
+  let maxWaitTime = 8000; // Maximum wait time: 8 seconds
 
-      progressBar.style.width = loadProgress + "%";
+  // Start progress animation immediately
+  startProgressAnimation();
 
-      if (loadProgress < 100) {
-        setTimeout(updateProgress, 200);
-      } else {
-        // When progress reaches 100%, wait a bit then hide the loader
-        setTimeout(hideLoader, 500);
+  // Function to animate the progress bar
+  function startProgressAnimation() {
+    // Start with faster progress up to 75%
+    loadingInterval = setInterval(function () {
+      if (progress < 75) {
+        progress += Math.floor(Math.random() * 8) + 3; // 3-10% increments
+      } else if (progress < 85) {
+        progress += Math.floor(Math.random() * 3) + 1; // 1-3% increments (slower near the end)
       }
-    }
+
+      if (progress > 85) {
+        progress = 85; // Cap at 85% until fully loaded
+        clearInterval(loadingInterval);
+      }
+
+      updateProgressBar();
+    }, 200);
+
+    // Set a timeout to ensure the page loads eventually
+    setTimeout(completeLoading, maxWaitTime);
   }
 
-  // Function to hide loader
-  function hideLoader() {
-    loader.classList.add("hidden");
-    // Remove loader from DOM after animation completes
-    setTimeout(() => {
-      loader.style.display = "none";
+  // Update the progress bar width
+  function updateProgressBar() {
+    progressBar.style.width = progress + "%";
+  }
+
+  // Finish loading animation and show page
+  function completeLoading() {
+    // Clear any existing interval
+    if (loadingInterval) clearInterval(loadingInterval);
+
+    // Animate to 100%
+    progress = 100;
+    updateProgressBar();
+
+    // Wait for progress bar animation to finish
+    setTimeout(function () {
+      // Add loaded class to body
+      document.body.classList.add("loaded");
+
+      // Hide the loader
+      loader.classList.add("hidden");
+
+      // Enable scrolling
+      document.documentElement.classList.remove("loading");
+
+      // Remove the loader element after transition
+      setTimeout(function () {
+        if (loader && loader.parentNode) {
+          loader.parentNode.removeChild(loader);
+        }
+      }, 500);
     }, 500);
   }
 
-  // Start progress animation
-  setTimeout(updateProgress, 500);
-
-  // Alternative: Wait for all content to load
+  // When window is fully loaded, complete the loading progress
   window.addEventListener("load", function () {
-    loadProgress = 100;
-    progressBar.style.width = "100%";
-    setTimeout(hideLoader, 500);
+    // Wait a little bit after load for a smoother experience
+    setTimeout(completeLoading, 500);
   });
 });
