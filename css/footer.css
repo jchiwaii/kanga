@@ -126,7 +126,7 @@
   justify-content: center;
   width: 4rem;
   height: 4rem;
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: #deb887;
   text-decoration: none;
   transition: all 0.3s ease;
   position: relative;
@@ -145,7 +145,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #deb887;
+  background-color: #8585a9;
   transform: scale(0);
   transition: transform 0.5s ease;
   z-index: 1;

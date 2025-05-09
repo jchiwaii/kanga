@@ -1,0 +1,175 @@
+@font-face {
+  font-family: "Maglityca";
+  src: url("Gritlen-Black.woff2") format("woff2"), url("Gritlen-Black.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Maglityca Ita";
+  src: url("Gritlen-ItalicBold.woff2") format("woff2"), url("Gritlen-ItalicBold.woff") format("woff");
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Maglityca Black Ita";
+  src: url("Gritlen-ItalicBlack.woff2") format("woff2"), url("Gritlen-ItalicBlack.woff") format("woff");
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Maglityca Light Ita";
+  src: url("Gritlen-ItalicLight.woff2") format("woff2"), url("Gritlen-ItalicLight.woff") format("woff");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Maglityca";
+  src: url("Gritlen-Bold.woff2") format("woff2"), url("Gritlen-Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Maglityca ExtLt Ita";
+  src: url("Gritlen-ItalicExtraLight.woff2") format("woff2"), url("Gritlen-ItalicExtraLight.woff") format("woff");
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Maglityca Med";
+  src: url("Gritlen-Medium.woff2") format("woff2"), url("Gritlen-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Maglityca ExtBd";
+  src: url("Gritlen-ExtraBold.woff2") format("woff2"), url("Gritlen-ExtraBold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Maglityca ExtBd Ita";
+  src: url("Gritlen-ItalicExtraBold.woff2") format("woff2"), url("Gritlen-ItalicExtraBold.woff") format("woff");
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Maglityca Ita";
+  src: url("Gritlen-Italic.woff2") format("woff2"), url("Gritlen-Italic.woff") format("woff");
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Maglityca Med Ita";
+  src: url("Gritlen-ItalicMedium.woff2") format("woff2"), url("Gritlen-ItalicMedium.woff") format("woff");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Maglityca SemBd Ita";
+  src: url("Gritlen-ItalicSemiBold.woff2") format("woff2"), url("Gritlen-ItalicSemiBold.woff") format("woff");
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Maglityca ExtLt";
+  src: url("Gritlen-ExtraLight.woff2") format("woff2"), url("Gritlen-ExtraLight.woff") format("woff");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Maglityca Thin Ita";
+  src: url("Gritlen-ItalicThin.woff2") format("woff2"), url("Gritlen-ItalicThin.woff") format("woff");
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Maglityca";
+  src: url("Gritlen-Light.woff2") format("woff2"), url("Gritlen-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Maglityca";
+  src: url("Gritlen-Regular.woff2") format("woff2"), url("Gritlen-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Maglityca SemBd";
+  src: url("Gritlen-SemiBold.woff2") format("woff2"), url("Gritlen-SemiBold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Maglityca";
+  src: url("Gritlen-Thin.woff2") format("woff2"), url("Gritlen-Thin.woff") format("woff");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "JUST Sans ExLight";
+  src: url("JUSTSans-ExLt.woff2") format("woff2"), url("JUSTSans-ExLt.woff") format("woff");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "JUST Sans";
+  src: url("JUSTSans-Lt.woff2") format("woff2"), url("JUSTSans-Lt.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "JUST Sans";
+  src: url("JUSTSans-Bd.woff2") format("woff2"), url("JUSTSans-Bd.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "JUST Sans";
+  src: url("JUSTSans-Md.woff2") format("woff2"), url("JUSTSans-Md.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "JUST Sans ExBold";
+  src: url("JUSTSans-ExBd.woff2") format("woff2"), url("JUSTSans-ExBd.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "JUST Sans";
+  src: url("JUSTSans-SmBd.woff2") format("woff2"), url("JUSTSans-SmBd.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "JUST Sans";
+  src: url("JUSTSans-Rg.woff2") format("woff2"), url("JUSTSans-Rg.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}/*# sourceMappingURL=fonts.css.map */

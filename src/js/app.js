@@ -507,3 +507,26 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+// Button to scroll to top
+
+document.addEventListener("DOMContentLoaded", function () {
+  const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+  // Show button when user scrolls down 300px from the top
+  window.addEventListener("scroll", function () {
+    if (window.pageYOffset > 300) {
+      scrollToTopBtn.classList.add("show");
+    } else {
+      scrollToTopBtn.classList.remove("show");
+    }
+  });
+
+  // Smooth scroll to top when button is clicked
+  scrollToTopBtn.addEventListener("click", function () {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  });
+});
