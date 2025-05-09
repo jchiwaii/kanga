@@ -43,7 +43,7 @@
   margin: 0;
 }
 .footer__links a {
-  color: #ccc;
+  color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
   font-size: 1.5rem;
   font-weight: 300;
@@ -64,7 +64,7 @@
   }
 }
 .footer__contact a {
-  color: #ccc;
+  color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
   transition: color 0.3s ease;
 }
@@ -95,7 +95,7 @@
 }
 .footer__copyright p {
   font-size: 1.4rem;
-  color: #ccc;
+  color: rgba(255, 255, 255, 0.7);
   margin: 0;
   font-weight: 300;
 }
