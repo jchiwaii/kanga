@@ -7,6 +7,17 @@
     <link rel="stylesheet" href="/stylesheet.css" />
     <script src="/src/js/app.js"></script>
     <title>Kanga || You Dream, We Sew</title>
+
+    <!-- Preload critical images -->
+    <link rel="preload" as="image" href="/src/images/logo.png" />
+    <link rel="preload" as="image" href="/src/images/icons/fb.png" />
+    <link rel="preload" as="image" href="/src/images/icons/twitter.png" />
+    <link rel="preload" as="image" href="/src/images/icons/instagram.png" />
+    <link rel="preload" as="image" href="/src/images/icons/youtube.png" />
+    <link rel="preload" as="image" href="/src/images/icons/google.png" />
+
+    <!-- Add cache control meta tags -->
+    <meta http-equiv="Cache-Control" content="max-age=86400, must-revalidate" />
   </head>
   <body>
     <!-- Top Info Bar -->
@@ -33,6 +44,11 @@
               src="/src/images/icons/fb.png"
               alt="Facebook"
               class="social-icon"
+              width="24"
+              height="24"
+              loading="eager"
+              fetchpriority="high"
+              decoding="async"
             />
           </a>
           <a href="#" class="top-bar__social-link" aria-label="Twitter">
@@ -40,6 +56,11 @@
               src="/src/images/icons/twitter.png"
               alt="Twitter"
               class="social-icon"
+              width="24"
+              height="24"
+              loading="eager"
+              fetchpriority="high"
+              decoding="async"
             />
           </a>
           <a href="#" class="top-bar__social-link" aria-label="Instagram">
@@ -47,6 +68,11 @@
               src="/src/images/icons/instagram.png"
               alt="Instagram"
               class="social-icon"
+              width="24"
+              height="24"
+              loading="eager"
+              fetchpriority="high"
+              decoding="async"
             />
           </a>
           <a href="#" class="top-bar__social-link" aria-label="YouTube">
@@ -54,6 +80,11 @@
               src="/src/images/icons/youtube.png"
               alt="YouTube"
               class="social-icon"
+              width="24"
+              height="24"
+              loading="eager"
+              fetchpriority="high"
+              decoding="async"
             />
           </a>
           <a href="#" class="top-bar__social-link" aria-label="Google">
@@ -61,6 +92,11 @@
               src="/src/images/icons/google.png"
               alt="Google"
               class="social-icon"
+              width="24"
+              height="24"
+              loading="eager"
+              fetchpriority="high"
+              decoding="async"
             />
           </a>
         </div>
@@ -76,6 +112,11 @@
               src="/src/images/logo.png"
               alt="Kanga Logo"
               class="header__logo-img"
+              width="60"
+              height="60"
+              loading="eager"
+              fetchpriority="high"
+              decoding="async"
             />
           </div>
           <div class="header__logo-text">Kanga</div>
@@ -185,12 +226,20 @@
               <img
                 src="/src/images/about/about-1.jpg"
                 alt="Premium African Fabric"
+                width="500"
+                height="650"
+                loading="lazy"
+                decoding="async"
               />
             </div>
             <div class="image-container secondary-image">
               <img
                 src="/src/images/about/about-2.jpg"
                 alt="Tailoring Process"
+                width="350"
+                height="400"
+                loading="lazy"
+                decoding="async"
               />
             </div>
           </div>
@@ -244,7 +293,14 @@
             <div class="service-content">
               <div class="service-image-container">
                 <div class="service-image-circle">
-                  <img src="/src/images/services/1.jpg" alt="Suits & Shirts" />
+                  <img
+                    src="/src/images/services/1.jpg"
+                    alt="Suits & Shirts"
+                    width="300"
+                    height="300"
+                    loading="lazy"
+                    decoding="async"
+                  />
                 </div>
               </div>
               <h3 class="service-title">Suits & Shirts</h3>
@@ -261,6 +317,10 @@
                   <img
                     src="/src/images/services/2.jpg"
                     alt="Stylish Clothing"
+                    width="300"
+                    height="300"
+                    loading="lazy"
+                    decoding="async"
                   />
                 </div>
               </div>
@@ -275,7 +335,14 @@
             <div class="service-content">
               <div class="service-image-container">
                 <div class="service-image-circle">
-                  <img src="/src/images/services/3.jpg" alt="Custom Work" />
+                  <img
+                    src="/src/images/services/3.jpg"
+                    alt="Custom Work"
+                    width="300"
+                    height="300"
+                    loading="lazy"
+                    decoding="async"
+                  />
                 </div>
               </div>
               <h3 class="service-title">Custom Work</h3>
@@ -294,14 +361,28 @@
         <div class="stats-grid">
           <div class="stat-item silver-bg">
             <div class="stat-icon">
-              <img src="/src/images/icons/SUIT.png" alt="Suits Icon" />
+              <img
+                src="/src/images/icons/SUIT.png"
+                alt="Suits Icon"
+                width="48"
+                height="48"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
             <div class="stat-number" data-target="2700">0</div>
             <div class="stat-label">SUITS STITCHED</div>
           </div>
           <div class="stat-item gold-bg">
             <div class="stat-icon">
-              <img src="/src/images/icons/DRESS.png" alt="Dresses Icon" />
+              <img
+                src="/src/images/icons/DRESS.png"
+                alt="Dresses Icon"
+                width="48"
+                height="48"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
             <div class="stat-number" data-target="8800">0</div>
             <div class="stat-label">DRESSES STITCHED</div>
@@ -311,6 +392,10 @@
               <img
                 src="/src/images/icons/measurement.png"
                 alt="Measurements Icon"
+                width="48"
+                height="48"
+                loading="lazy"
+                decoding="async"
               />
             </div>
             <div class="stat-number" data-target="2700">0</div>
@@ -318,7 +403,14 @@
           </div>
           <div class="stat-item gold-bg">
             <div class="stat-icon">
-              <img src="/src/images/icons/tailors.png" alt="Tailors Icon" />
+              <img
+                src="/src/images/icons/tailors.png"
+                alt="Tailors Icon"
+                width="48"
+                height="48"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
             <div class="stat-number" data-target="24">0</div>
             <div class="stat-label">EXPERT TAILORS</div>
@@ -335,6 +427,10 @@
             <img
               src="/src/images/wedding/wedding.jpg"
               alt="Wedding and Casual Suits"
+              width="600"
+              height="450"
+              loading="lazy"
+              decoding="async"
             />
           </div>
           <div class="banner-content">
@@ -356,6 +452,10 @@
               <img
                 src="/src/images/icons/fabric.png"
                 alt="Quality Fabric Icon"
+                width="64"
+                height="64"
+                loading="lazy"
+                decoding="async"
               />
             </div>
             <div class="feature-content">
@@ -369,7 +469,14 @@
 
           <div class="feature-item">
             <div class="feature-icon">
-              <img src="/src/images/icons/work.png" alt="Finest Work Icon" />
+              <img
+                src="/src/images/icons/work.png"
+                alt="Finest Work Icon"
+                width="64"
+                height="64"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
             <div class="feature-content">
               <h3>Finest Work</h3>
@@ -385,6 +492,10 @@
               <img
                 src="/src/images/icons/design.png"
                 alt="Unique Design Icon"
+                width="64"
+                height="64"
+                loading="lazy"
+                decoding="async"
               />
             </div>
             <div class="feature-content">
@@ -401,6 +512,10 @@
               <img
                 src="/src/images/icons/delivery.png"
                 alt="Timely Delivery Icon"
+                width="64"
+                height="64"
+                loading="lazy"
+                decoding="async"
               />
             </div>
             <div class="feature-content">
@@ -426,42 +541,84 @@
       <div class="gallery-grid">
         <div class="gallery-item">
           <div class="image-container">
-            <img src="/src/images/gallery/1.jpg" alt="Gallery Image 1" />
+            <img
+              src="/src/images/gallery/1.jpg"
+              alt="Gallery Image 1"
+              width="400"
+              height="600"
+              loading="lazy"
+              decoding="async"
+            />
             <div class="glare"></div>
             <div class="overlay"></div>
           </div>
         </div>
         <div class="gallery-item">
           <div class="image-container">
-            <img src="/src/images/gallery/2.jpg" alt="Gallery Image 2" />
+            <img
+              src="/src/images/gallery/2.jpg"
+              alt="Gallery Image 2"
+              width="400"
+              height="600"
+              loading="lazy"
+              decoding="async"
+            />
             <div class="glare"></div>
             <div class="overlay"></div>
           </div>
         </div>
         <div class="gallery-item">
           <div class="image-container">
-            <img src="/src/images/gallery/3.jpg" alt="Gallery Image 3" />
+            <img
+              src="/src/images/gallery/3.jpg"
+              alt="Gallery Image 3"
+              width="400"
+              height="600"
+              loading="lazy"
+              decoding="async"
+            />
             <div class="glare"></div>
             <div class="overlay"></div>
           </div>
         </div>
         <div class="gallery-item">
           <div class="image-container">
-            <img src="/src/images/gallery/4.jpg" alt="Gallery Image 4" />
+            <img
+              src="/src/images/gallery/4.jpg"
+              alt="Gallery Image 4"
+              width="400"
+              height="600"
+              loading="lazy"
+              decoding="async"
+            />
             <div class="glare"></div>
             <div class="overlay"></div>
           </div>
         </div>
         <div class="gallery-item">
           <div class="image-container">
-            <img src="/src/images/gallery/5.jpg" alt="Gallery Image 5" />
+            <img
+              src="/src/images/gallery/5.jpg"
+              alt="Gallery Image 5"
+              width="400"
+              height="600"
+              loading="lazy"
+              decoding="async"
+            />
             <div class="glare"></div>
             <div class="overlay"></div>
           </div>
         </div>
         <div class="gallery-item">
           <div class="image-container">
-            <img src="/src/images/gallery/6.jpg" alt="Gallery Image 6" />
+            <img
+              src="/src/images/gallery/6.jpg"
+              alt="Gallery Image 6"
+              width="400"
+              height="600"
+              loading="lazy"
+              decoding="async"
+            />
             <div class="glare"></div>
             <div class="overlay"></div>
           </div>
@@ -539,7 +696,14 @@
           <div class="contact-info-column">
             <div class="contact-person">
               <div class="person-image">
-                <img src="/src/images/tailor.jpg" alt="Mercy Jane" />
+                <img
+                  src="/src/images/tailor.jpg"
+                  alt="Mercy Jane"
+                  width="300"
+                  height="300"
+                  loading="lazy"
+                  decoding="async"
+                />
               </div>
               <h3 class="person-name">Mercy Jane</h3>
               <p class="person-title">Master Tailor</p>
@@ -594,6 +758,10 @@
                 src="/src/images/icons/chat.png"
                 alt="Twitter"
                 class="footer__social-icon"
+                width="24"
+                height="24"
+                loading="lazy"
+                decoding="async"
               />
             </a>
             <a href="#" class="footer__social-link" aria-label="Facebook">
@@ -601,6 +769,10 @@
                 src="/src/images/icons/follow.png"
                 alt="Facebook"
                 class="footer__social-icon"
+                width="24"
+                height="24"
+                loading="lazy"
+                decoding="async"
               />
             </a>
             <a href="#" class="footer__social-link" aria-label="Pinterest">
@@ -608,6 +780,10 @@
                 src="/src/images/icons/email.png"
                 alt="Pinterest"
                 class="footer__social-icon"
+                width="24"
+                height="24"
+                loading="lazy"
+                decoding="async"
               />
             </a>
             <a href="#" class="footer__social-link" aria-label="Instagram">
@@ -615,6 +791,10 @@
                 src="/src/images/icons/like.png"
                 alt="Instagram"
                 class="footer__social-icon"
+                width="24"
+                height="24"
+                loading="lazy"
+                decoding="async"
               />
             </a>
             <a href="#" class="footer__social-link" aria-label="YouTube">
@@ -622,6 +802,10 @@
                 src="/src/images/icons/011-message.png"
                 alt="YouTube"
                 class="footer__social-icon"
+                width="24"
+                height="24"
+                loading="lazy"
+                decoding="async"
               />
             </a>
           </div>
@@ -637,6 +821,10 @@
         src="/src/images/icons/tap.png"
         alt="Arrow up"
         class="scroll-to-top__icon"
+        width="32"
+        height="32"
+        loading="lazy"
+        decoding="async"
       />
     </button>
 

@@ -613,3 +613,143 @@ document.addEventListener("DOMContentLoaded", function () {
     setTimeout(completeLoading, 500);
   });
 });
+
+// Images
+
+if ("IntersectionObserver" in window) {
+  const imageObserver = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          const src = img.getAttribute("data-src");
+          if (src) {
+            img.src = src;
+            img.removeAttribute("data-src");
+          }
+          imageObserver.unobserve(img);
+        }
+      });
+    },
+    {
+      rootMargin: "50px 0px",
+      threshold: 0.01,
+    }
+  );
+
+  // Convert lazy-loaded images to use data-src instead
+  document.addEventListener("DOMContentLoaded", () => {
+    const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+    lazyImages.forEach((img) => {
+      // Set up image observation only if not in viewport initially
+      if (!isInViewport(img)) {
+        const src = img.src;
+        img.setAttribute("data-src", src);
+        img.src =
+          'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1 1"%3E%3C/svg%3E';
+        imageObserver.observe(img);
+      }
+    });
+  });
+}
+
+// Helper function to check if element is in viewport
+function isInViewport(element) {
+  const rect = element.getBoundingClientRect();
+  return (
+    rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
+    rect.left <= (window.innerWidth || document.documentElement.clientWidth) &&
+    rect.bottom >= 0 &&
+    rect.right >= 0
+  );
+}
+
+// Cache images in local storage where appropriate
+document.addEventListener("DOMContentLoaded", () => {
+  // Small icons can be cached in localStorage for repeat visits
+  const CACHE_KEY = "kanga_image_cache";
+  let imageCache = {};
+
+  try {
+    const cachedData = localStorage.getItem(CACHE_KEY);
+    if (cachedData) {
+      imageCache = JSON.parse(cachedData);
+
+      // Apply cached icons
+      const smallIcons = document.querySelectorAll(
+        ".social-icon, .footer__social-icon"
+      );
+      smallIcons.forEach((icon) => {
+        const src = icon.getAttribute("src");
+        if (imageCache[src]) {
+          icon.src = imageCache[src];
+        } else {
+          // Cache the icon for future visits
+          fetch(src)
+            .then((response) => response.blob())
+            .then((blob) => {
+              const reader = new FileReader();
+              reader.onloadend = function () {
+                // Only cache small images (under 20KB)
+                if (reader.result.length < 20 * 1024) {
+                  imageCache[src] = reader.result;
+                  try {
+                    localStorage.setItem(CACHE_KEY, JSON.stringify(imageCache));
+                  } catch (e) {
+                    // Storage might be full, clear and try again
+                    imageCache = {};
+                    localStorage.setItem(CACHE_KEY, JSON.stringify(imageCache));
+                  }
+                }
+              };
+              reader.readAsDataURL(blob);
+            });
+        }
+      });
+    }
+  } catch (e) {
+    console.log("Cache storage error:", e);
+  }
+});
+
+// Add service worker for caching larger images
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker
+      .register("/service-worker.js")
+      .then((registration) => {
+        console.log("ServiceWorker registered with scope:", registration.scope);
+      })
+      .catch((error) => {
+        console.log("ServiceWorker registration failed:", error);
+      });
+  });
+}
+
+// Image preconnect and prefetch for next pages
+document.addEventListener("DOMContentLoaded", () => {
+  // Once main content is loaded, prefetch next likely images
+  const prefetchGalleryImage = new Image();
+  prefetchGalleryImage.src = "/src/images/gallery/1.jpg";
+});
+
+// Add support for native lazy loading fallback
+document.addEventListener("DOMContentLoaded", () => {
+  if (!("loading" in HTMLImageElement.prototype)) {
+    // Fallback for browsers that don't support native lazy loading
+    const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+    const lazyImageObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const lazyImage = entry.target;
+          lazyImage.src = lazyImage.dataset.src || lazyImage.src;
+          lazyImageObserver.unobserve(lazyImage);
+        }
+      });
+    });
+
+    lazyImages.forEach((lazyImage) => {
+      lazyImageObserver.observe(lazyImage);
+    });
+  }
+});
