@@ -530,3 +530,49 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
+// Loader
+// This code creates a loader that shows progress as the page loads
+// and hides it once the page is fully loaded. It also includes a fallback
+// to hide the loader after a set time if the page takes too long to load.
+document.addEventListener("DOMContentLoaded", function () {
+  const loader = document.getElementById("pageLoader");
+  const progressBar = document.querySelector(".loader__progress-bar");
+  let loadProgress = 0;
+
+  // Function to update progress bar
+  function updateProgress() {
+    if (loadProgress < 100) {
+      loadProgress += Math.floor(Math.random() * 15) + 5; // Random progress between 5-20%
+      if (loadProgress > 100) loadProgress = 100;
+
+      progressBar.style.width = loadProgress + "%";
+
+      if (loadProgress < 100) {
+        setTimeout(updateProgress, 200);
+      } else {
+        // When progress reaches 100%, wait a bit then hide the loader
+        setTimeout(hideLoader, 500);
+      }
+    }
+  }
+
+  // Function to hide loader
+  function hideLoader() {
+    loader.classList.add("hidden");
+    // Remove loader from DOM after animation completes
+    setTimeout(() => {
+      loader.style.display = "none";
+    }, 500);
+  }
+
+  // Start progress animation
+  setTimeout(updateProgress, 500);
+
+  // Alternative: Wait for all content to load
+  window.addEventListener("load", function () {
+    loadProgress = 100;
+    progressBar.style.width = "100%";
+    setTimeout(hideLoader, 500);
+  });
+});
