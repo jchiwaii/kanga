@@ -276,7 +276,6 @@ html {
   width: 4rem;
   height: 4rem;
   background-color: rgba(255, 255, 255, 0.05);
-  color: #3c3c4d;
   text-decoration: none;
   transition: all 0.3s ease;
   position: relative;
@@ -287,13 +286,6 @@ html {
     width: 3.5rem;
     height: 3.5rem;
   }
-}
-.footer__social-link i {
-  font-size: 1.5rem;
-  position: relative;
-  z-index: 2;
-  transition: color 0.3s ease;
-  color: #fff;
 }
 .footer__social-link::before {
   content: "";
@@ -310,11 +302,18 @@ html {
 .footer__social-link:hover {
   border-radius: 50%;
 }
-.footer__social-link:hover i {
-  color: white;
+.footer__social-link:hover .footer__social-icon {
+  filter: brightness(1.2);
 }
 .footer__social-link:hover::before {
   transform: scale(1);
+}
+.footer__social-icon {
+  height: 20px;
+  width: auto;
+  position: relative;
+  z-index: 2;
+  transition: filter 0.3s ease;
 }
 
 .gallery-title-section {
