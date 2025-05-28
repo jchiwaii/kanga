@@ -1,6 +1,6 @@
 .services-section {
   position: relative;
-  padding: 10rem 0 20rem 0;
+  padding: $services-section-padding-top 0 $services-section-padding-bottom 0;
   overflow: hidden;
 
   // Background overlay
@@ -13,68 +13,68 @@
     background-image: url("/src/images/backgrounds/services.jpg");
     background-size: cover;
     background-position: center;
-    opacity: 0.1;
-    z-index: -1;
+    opacity: $services-bg-overlay-opacity;
+    z-index: $z-index-negative;
   }
 
   .container {
-    max-width: 120rem;
+    max-width: $container-max-width;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0 $services-container-padding-x;
     position: relative;
-    z-index: 1;
+    z-index: $z-index-default;
 
-    @media (max-width: 1240px) {
+    @media (max-width: $breakpoint-xl-alt) {
       max-width: 100%;
-      padding: 0 3rem;
+      padding: 0 $services-container-padding-x-xl-screen;
     }
 
-    @media (max-width: 576px) {
-      padding: 0 2rem;
+    @media (max-width: $breakpoint-sm) {
+      padding: 0 $services-container-padding-x-sm-screen;
     }
   }
 
   .section-title {
-    font-family: "JUST Sans", serif;
+    font-family: $font-primary;
     text-align: center;
-    margin-bottom: 7rem;
-    font-size: 3.6rem;
-    font-weight: 300;
-    color: #333;
+    margin-bottom: $services-title-margin-bottom;
+    font-size: $services-title-font-size;
+    font-weight: $services-title-font-weight;
+    color: $services-title-color;
     position: relative;
 
-    @media (max-width: 992px) {
-      font-size: 3.2rem;
-      margin-bottom: 6rem;
+    @media (max-width: $breakpoint-lg) {
+      font-size: $services-title-font-size-lg;
+      margin-bottom: $services-title-margin-bottom-lg;
     }
 
-    @media (max-width: 768px) {
-      font-size: 3rem;
-      margin-bottom: 5rem;
+    @media (max-width: $breakpoint-md) {
+      font-size: $services-title-font-size-md;
+      margin-bottom: $services-title-margin-bottom-md;
     }
 
-    @media (max-width: 480px) {
-      font-size: 2.6rem;
-      margin-bottom: 4rem;
-      letter-spacing: 0.1rem;
+    @media (max-width: $breakpoint-xs) {
+      font-size: $services-title-font-size-xs;
+      margin-bottom: $services-title-margin-bottom-xs;
+      letter-spacing: $services-title-letter-spacing-xs;
     }
 
     &:after {
       content: "";
       display: block;
-      width: 12rem;
-      height: 0.1rem;
-      background-color: #deb887;
-      margin: 2rem auto 0;
+      width: $services-title-underline-width;
+      height: $services-title-underline-height;
+      background-color: $services-title-underline-color;
+      margin: $services-title-underline-margin-top auto 0;
 
-      @media (max-width: 768px) {
-        width: 3.5rem;
-        margin: 1.5rem auto 0;
+      @media (max-width: $breakpoint-md) {
+        width: $services-title-underline-width-md;
+        margin: $services-title-underline-margin-top-md auto 0;
       }
 
-      @media (max-width: 480px) {
-        width: 3rem;
-        margin: 1.2rem auto 0;
+      @media (max-width: $breakpoint-xs) {
+        width: $services-title-underline-width-xs;
+        margin: $services-title-underline-margin-top-xs auto 0;
       }
     }
   }
@@ -82,12 +82,11 @@
   .services-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 3rem;
+    gap: $services-grid-gap;
 
-    // Changed: Switch to single column at a much earlier breakpoint (992px)
-    @media (max-width: 992px) {
+    @media (max-width: $breakpoint-lg) {
       grid-template-columns: 1fr;
-      gap: 6rem; // Increased gap between vertically stacked cards
+      gap: $services-grid-gap-lg;
     }
   }
 
@@ -95,8 +94,10 @@
     height: 100%;
     display: flex;
     opacity: 0;
-    transform: translateX(50px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
+    transform: translateX($service-card-translateX-start);
+    transition: opacity $service-card-transition-duration
+        $transition-easing-default,
+      transform $service-card-transition-duration $transition-easing-default;
 
     &.appear {
       opacity: 1;
@@ -104,53 +105,53 @@
     }
 
     &:nth-child(1) {
-      transition-delay: 0.1s;
+      transition-delay: $service-card-delay-child-1;
     }
 
     &:nth-child(2) {
-      transition-delay: 0.3s;
+      transition-delay: $service-card-delay-child-2;
     }
 
     &:nth-child(3) {
-      transition-delay: 0.5s;
+      transition-delay: $service-card-delay-child-3;
     }
 
-    // Additional hover effect
     &:hover {
       .service-image-circle {
-        transform: scale(1.05);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        transform: scale($service-card-hover-image-scale);
+        box-shadow: $service-card-hover-image-shadow;
       }
 
       .service-content {
-        background-color: rgba(219, 200, 172, 0.18);
+        background-color: $service-card-content-hover-bg;
       }
     }
 
     .service-content {
-      background-color: rgba(219, 200, 172, 0.1);
-      padding: 4rem 3rem;
+      background-color: $service-card-content-bg;
+      padding: $service-card-content-padding;
       width: 100%;
       height: 100%;
       display: flex;
       flex-direction: column;
       justify-content: space-around;
       align-items: center;
-      min-height: 32rem;
-      border-radius: 0.5rem;
-      transition: background-color 0.3s ease;
+      min-height: $service-card-content-min-height;
+      border-radius: $service-card-border-radius;
+      transition: background-color $service-card-content-transition-duration
+        $transition-easing-default;
 
-      @media (max-width: 992px) {
-        padding: 3.5rem 2.5rem;
-        min-height: 28rem; // Slightly reduced height for vertical layout
+      @media (max-width: $breakpoint-lg) {
+        padding: $service-card-content-padding-lg;
+        min-height: $service-card-content-min-height-lg;
       }
 
-      @media (max-width: 768px) {
-        padding: 3rem 2rem;
+      @media (max-width: $breakpoint-md) {
+        padding: $service-card-content-padding-md;
       }
 
-      @media (max-width: 576px) {
-        min-height: 26rem;
+      @media (max-width: $breakpoint-sm) {
+        min-height: $service-card-content-min-height-sm;
       }
     }
   }
@@ -158,23 +159,24 @@
   .service-image-container {
     position: relative;
     margin: 0 auto;
-    width: 18.9rem;
-    height: 18.9rem;
-    transition: transform 0.4s ease;
+    width: $service-image-container-size;
+    height: $service-image-container-size;
+    transition: transform $service-image-container-transition-duration
+      $transition-easing-default;
 
-    @media (max-width: 992px) {
-      width: 17rem;
-      height: 17rem;
+    @media (max-width: $breakpoint-lg) {
+      width: $service-image-container-size-lg;
+      height: $service-image-container-size-lg;
     }
 
-    @media (max-width: 768px) {
-      width: 16rem;
-      height: 16rem;
+    @media (max-width: $breakpoint-md) {
+      width: $service-image-container-size-md;
+      height: $service-image-container-size-md;
     }
 
-    @media (max-width: 480px) {
-      width: 15rem;
-      height: 15rem;
+    @media (max-width: $breakpoint-xs) {
+      width: $service-image-container-size-xs;
+      height: $service-image-container-size-xs;
     }
 
     &::before {
@@ -183,30 +185,32 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 24rem;
-      height: 24rem;
-      border: 0.1rem dashed #6b6b6b;
+      width: $service-image-dashed-border-size;
+      height: $service-image-dashed-border-size;
+      border: $service-image-dashed-border-width dashed
+        $service-image-dashed-border-color;
       border-radius: 50%;
-      transition: all 0.4s ease;
+      transition: all $service-image-dashed-border-transition-duration
+        $transition-easing-default;
 
-      @media (max-width: 992px) {
-        width: 22rem;
-        height: 22rem;
+      @media (max-width: $breakpoint-lg) {
+        width: $service-image-dashed-border-size-lg;
+        height: $service-image-dashed-border-size-lg;
       }
 
-      @media (max-width: 768px) {
-        width: 20rem;
-        height: 20rem;
+      @media (max-width: $breakpoint-md) {
+        width: $service-image-dashed-border-size-md;
+        height: $service-image-dashed-border-size-md;
       }
 
-      @media (max-width: 480px) {
-        width: 19rem;
-        height: 19rem;
+      @media (max-width: $breakpoint-xs) {
+        width: $service-image-dashed-border-size-xs;
+        height: $service-image-dashed-border-size-xs;
       }
     }
 
     &:hover::before {
-      border-color: #dbc8ac;
+      border-color: $service-image-dashed-border-hover-color;
       transform: translate(-50%, -50%) rotate(45deg);
     }
   }
@@ -216,86 +220,67 @@
     height: 100%;
     overflow: hidden;
     border-radius: 50%;
-    background: #ccc;
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    background: $service-image-circle-bg;
+    transition: transform $service-image-dashed-border-transition-duration
+        $transition-easing-default,
+      box-shadow $service-image-dashed-border-transition-duration
+        $transition-easing-default;
 
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.7s ease;
+      transition: transform $service-card-transition-duration
+        $transition-easing-default;
     }
 
     &:hover img {
-      transform: scale(1.1);
+      transform: scale($service-image-circle-img-hover-scale);
     }
   }
 
   .service-title {
-    font-size: 2.2rem;
-    color: #333;
-    font-weight: 300;
-    letter-spacing: 0.1rem;
+    font-size: $service-text-title-font-size;
+    color: $service-text-title-color;
+    font-weight: $service-text-title-font-weight;
+    letter-spacing: $service-text-title-letter-spacing;
     text-align: center;
-    margin-top: 4rem;
+    margin-top: $service-text-title-margin-top;
 
-    @media (max-width: 992px) {
-      font-size: 2.1rem;
-      margin-top: 3.5rem;
+    @media (max-width: $breakpoint-lg) {
+      font-size: $service-text-title-font-size-lg;
+      margin-top: $service-text-title-margin-top-lg;
     }
 
-    @media (max-width: 768px) {
-      font-size: 2rem;
-      margin-top: 3rem;
+    @media (max-width: $breakpoint-md) {
+      font-size: $service-text-title-font-size-md;
+      margin-top: $service-text-title-margin-top-md;
     }
 
-    @media (max-width: 480px) {
-      font-size: 1.9rem;
-      margin-top: 2.5rem;
+    @media (max-width: $breakpoint-xs) {
+      font-size: $service-text-title-font-size-xs;
+      margin-top: $service-text-title-margin-top-xs;
     }
   }
 
   .service-description {
-    font-size: 1.6rem;
-    color: #333;
-    line-height: 1.8;
+    font-size: $service-description-font-size;
+    color: $service-description-color;
+    line-height: $service-description-line-height;
     margin: 0;
-    font-weight: 300;
+    font-weight: $service-description-font-weight;
     text-align: center;
-    margin-top: 1.5rem;
-    margin-bottom: -2rem;
+    margin-top: $service-description-margin-top;
+    margin-bottom: $service-description-margin-bottom;
 
-    @media (max-width: 992px) {
-      font-size: 1.5rem;
-      line-height: 1.7;
+    @media (max-width: $breakpoint-lg) {
+      font-size: $service-description-font-size-lg;
+      line-height: $service-description-line-height-lg;
     }
 
-    @media (max-width: 480px) {
-      font-size: 1.4rem;
-      line-height: 1.6;
+    @media (max-width: $breakpoint-xs) {
+      font-size: $service-description-font-size-xs;
+      line-height: $service-description-line-height-xs;
     }
-  }
-}
-
-// Animation keyframes remain unchanged
-@keyframes fadeInRight {
-  from {
-    opacity: 0;
-    transform: translateX(50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
   }
 }

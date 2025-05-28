@@ -1,16 +1,26 @@
 // Button mixin for reusable styling
-@mixin luxury-button {
+@mixin luxury-button(
+  $bg: $color-gold,
+  $text: $color-text-light,
+  $hover-fill: $color-dark-gray,
+  $radius: $default-border-radius,
+  $padding: 1.5rem 2.5rem,
+  $font-weight: $font-weight-bold
+) {
   position: relative;
-  background-color: #deb887;
-  color: white;
+  background-color: $bg;
+  color: $text;
   text-decoration: none;
-  padding: 1.5rem 2.5rem;
-  font-weight: bold;
+  padding: $padding;
+  font-weight: $font-weight;
   letter-spacing: 0.1rem;
   overflow: hidden;
-  z-index: 1;
-  border-radius: 0.4rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: $z-index-default;
+  border-radius: $radius;
+  border: none;
+  cursor: pointer;
+  transition: transform $transition-speed-fast $transition-easing-default,
+    box-shadow $transition-speed-fast $transition-easing-default;
 
   &::before {
     content: "";
@@ -19,14 +29,14 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    background-color: #333;
-    transition: all 0.5s ease;
-    z-index: -1;
+    background-color: $hover-fill;
+    transition: all $transition-speed-medium $transition-easing-default;
+    z-index: $z-index-default - 1;
   }
 
   &:hover {
     transform: translateY(-0.3rem);
-    box-shadow: 0 1rem 2rem rgba(222, 184, 135, 0.3);
+    box-shadow: 0 1rem 2rem rgba($color-gold, 0.3);
 
     &::before {
       left: 0;
@@ -43,12 +53,12 @@
     left: 0;
     width: 0;
     height: 0.2rem;
-    background-color: #deb887;
-    transition: width 0.4s ease;
+    background-color: $color-gold;
+    transition: width $transition-speed-medium $transition-easing-default;
   }
 
   &:hover {
-    color: #deb887;
+    color: $color-gold;
 
     &::before {
       width: 100%;
@@ -56,16 +66,19 @@
   }
 }
 
-@mixin form-focus-effect {
+@mixin form-focus-effect($focus-color: $color-brownish, $line-height: 1px) {
+  position: relative;
+  overflow: hidden;
+
   &::after {
     content: "";
     position: absolute;
     bottom: 0;
     left: 0;
     width: 0;
-    height: 1px;
-    background-color: #b19b77;
-    transition: width 0.4s ease;
+    height: $line-height;
+    background-color: $focus-color;
+    transition: width $transition-speed-medium $transition-easing-default;
   }
 
   &:focus-within::after {

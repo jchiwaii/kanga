@@ -56,53 +56,49 @@
 }
 
 .header {
-  background-color: #fff;
-  box-shadow: 0 0.2rem 1rem rgba(0, 0, 0, 0.1);
+  background-color: $color-background-default;
+  box-shadow: $box-shadow-sm;
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 100;
-  transition: box-shadow 0.4s ease;
+  z-index: $z-index-sticky;
+  transition: box-shadow $transition-speed-medium-alt $transition-easing-default;
   position: sticky;
 
   &.header--scrolled {
-    box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.15);
-    transform: translateY(-100%);
-    animation: slideDown 0.5s forwards;
-  }
-
-  &.header--sticky {
-    transform: translateY(0);
+    box-shadow: $box-shadow-md;
+    animation: slideDown $transition-speed-medium $transition-easing-default
+      forwards;
   }
 
   &__container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 120rem;
+    max-width: $header-container-max-width;
     margin: 0 auto;
-    padding: 1.5rem 2rem;
-    transition: padding 0.3s ease;
+    padding: $header-padding-y $header-padding-x;
+    transition: padding $transition-speed-fast $transition-easing-default;
     position: relative;
   }
 
   &__logo {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: $header-logo-gap;
     text-decoration: none;
     position: relative;
-    z-index: 10;
+    z-index: $z-index-header-logo;
   }
 
   &__logo-icon {
-    width: 4.5rem; /* Fixed from 1rem to a more typical size */
-    height: 4.5rem;
+    width: $header-logo-icon-size;
+    height: $header-logo-icon-size;
     display: flex;
     border-radius: 50%;
     align-items: center;
     justify-content: center;
-    transition: transform 0.3s ease;
+    transition: transform $transition-speed-fast $transition-easing-default;
   }
 
   &__logo-img {
@@ -112,47 +108,47 @@
   }
 
   &__logo-text {
-    font-size: 2.8rem;
-    font-family: "Rossa";
-    color: #333;
+    font-size: $header-logo-text-font-size;
+    font-family: $font-rossa;
+    color: $color-text-default;
     position: relative;
   }
 
   &__close {
     position: absolute;
-    top: 2rem;
-    right: 2rem;
-    color: #fff;
-    font-size: 3.2rem;
+    top: $header-close-button-position;
+    right: $header-close-button-position;
+    color: $color-text-light;
+    font-size: $header-close-button-font-size;
     background: none;
     border: none;
     cursor: pointer;
     display: none;
-    z-index: 5;
+    z-index: $z-index-header-dropdown-arrow;
   }
 
   &__mobile-toggle {
     display: none;
     flex-direction: column;
     justify-content: space-between;
-    height: 2.4rem;
-    width: 3rem;
+    height: $header-mobile-toggle-height;
+    width: $header-mobile-toggle-width;
     background: none;
     border: none;
     padding: 0;
     cursor: pointer;
-    z-index: 1001;
+    z-index: $z-index-header-mobile-toggle;
     position: absolute;
-    right: 2rem;
+    right: $header-padding-x;
     top: 50%;
     transform: translateY(-50%);
 
     span {
       width: 100%;
-      height: 0.3rem;
-      background-color: #333;
-      border-radius: 0.5rem;
-      transition: all 0.3s ease;
+      height: $header-mobile-toggle-bar-height;
+      background-color: $header-mobile-toggle-bar-bg;
+      border-radius: $header-mobile-toggle-bar-radius;
+      transition: all $transition-speed-fast $transition-easing-default;
       transform-origin: left center;
     }
 
@@ -161,11 +157,9 @@
         &:first-child {
           transform: rotate(45deg);
         }
-
         &:nth-child(2) {
           opacity: 0;
         }
-
         &:last-child {
           transform: rotate(-45deg);
         }
@@ -174,13 +168,13 @@
   }
 
   &__nav-container {
-    transition: all 0.4s ease;
+    transition: all $transition-speed-medium-alt $transition-easing-default;
   }
 
   &__nav {
     display: flex;
     list-style: none;
-    gap: 3rem;
+    gap: $header-nav-gap;
     margin: 0;
     padding: 0;
   }
@@ -193,37 +187,37 @@
 
   &__nav-link {
     text-decoration: none;
-    color: #333;
-    font-size: 1.4rem;
-    font-weight: 400;
-    transition: color 0.4s ease;
+    color: $color-text-default;
+    font-size: $font-size-md-alt;
+    font-weight: $font-weight-normal;
+    transition: color $transition-speed-medium-alt $transition-easing-default;
     position: relative;
-    padding: 0.8rem 0;
+    padding: $header-nav-link-padding-y 0;
     display: inline-block;
     @include nav-hover-effect;
   }
 
   &__nav-arrow {
     display: none;
-    margin-left: 0.5rem;
-    font-size: 2.4rem;
+    margin-left: $header-nav-arrow-margin-left;
+    font-size: $header-nav-arrow-font-size;
     line-height: 1;
-    color: #777;
+    color: $color-text-light-gray;
   }
 
   &__social {
     display: none;
     justify-content: center;
-    gap: 2rem;
-    margin-top: 4rem;
+    gap: $header-social-gap;
+    margin-top: $header-social-margin-top;
 
     &-link {
-      color: #fff;
-      font-size: 2rem;
-      transition: color 0.3s ease;
+      color: $color-text-light;
+      font-size: $header-social-link-font-size;
+      transition: color $transition-speed-fast $transition-easing-default;
 
       &:hover {
-        color: #deb887;
+        color: $color-gold;
       }
     }
   }
@@ -231,38 +225,38 @@
   &__right {
     display: flex;
     align-items: center;
-    gap: 2rem;
+    gap: $header-right-gap;
   }
 
   &__call {
     display: flex;
     flex-direction: column;
     text-align: right;
-    transition: transform 0.3s ease;
+    transition: transform $transition-speed-fast $transition-easing-default;
   }
 
   &__call-text {
-    font-size: 1.4rem;
-    color: #777;
+    font-size: $header-call-text-font-size;
+    color: $color-text-light-gray;
   }
 
   &__call-number {
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: #333;
+    font-size: $header-call-number-font-size;
+    font-weight: $font-weight-bold;
+    color: $color-text-default;
   }
 
   &__search {
     background: none;
     border: none;
-    font-size: 2rem;
+    font-size: $header-search-icon-font-size;
     cursor: pointer;
-    color: #333;
-    transition: all 0.4s ease;
+    color: $color-text-default;
+    transition: all $transition-speed-medium-alt $transition-easing-default;
     position: relative;
 
     &:hover {
-      color: #deb887;
+      color: $color-gold;
     }
   }
 
@@ -281,167 +275,143 @@
 }
 
 /* Responsive Styles */
-@media (max-width: 1024px) {
+@media (max-width: $breakpoint-lg-alt) {
   .header {
     &__container {
-      padding: 1.2rem 2rem;
+      padding: $header-padding-y-lg-screen $header-padding-x-lg-screen;
     }
-
     &__nav {
-      gap: 2rem;
+      gap: $header-nav-gap-lg-screen;
     }
-
     &__logo-text {
-      font-size: 2.6rem;
+      font-size: $header-logo-text-font-size-lg;
     }
-
     &__nav-link {
-      font-size: 1.3rem;
+      font-size: $font-size-md;
     }
-
     &__call {
       display: none;
     }
-
     &__book {
-      padding: 1.2rem 2rem;
+      padding: $header-book-btn-padding-y-lg-screen
+        $header-book-btn-padding-x-lg-screen;
     }
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: $breakpoint-md) {
   body.menu-open {
     overflow: hidden;
   }
-
   .header {
     &__container {
-      padding: 1rem 1.5rem;
+      padding: $header-padding-y-md-screen $header-padding-x-md-screen;
     }
-
     &__mobile-toggle {
       display: flex;
     }
-
     &__close {
       display: block;
     }
-
     &__logo-text {
-      font-size: 2.4rem;
+      font-size: $header-logo-text-font-size-md;
     }
-
     &__nav-container {
       position: fixed;
       top: 0;
       right: -100%;
-      width: 80%;
-      max-width: 32rem;
+      width: $header-mobile-nav-width;
+      max-width: $header-mobile-nav-max-width;
       height: 100vh;
-      background-color: #222;
-      padding: 8rem 3rem 3rem;
-      z-index: 1000;
-      transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+      background-color: $header-mobile-nav-bg;
+      padding: $header-mobile-nav-padding-top $header-mobile-nav-padding-x
+        $header-mobile-nav-padding-bottom;
+      z-index: $z-index-header-nav-mobile;
+      transition: right $transition-speed-medium-alt
+        $transition-cubic-bezier-nav;
       overflow-y: auto;
 
       &.active {
         right: 0;
       }
     }
-
     &__nav {
       flex-direction: column;
-      gap: 0;
+      gap: $header-nav-gap-md-screen;
     }
-
     &__nav-item {
-      border-bottom: 0.1rem solid rgba(255, 255, 255, 0.1);
+      border-bottom: $header-mobile-nav-item-border-width solid
+        $color-border-light-alpha;
       padding: 0;
       justify-content: space-between;
     }
-
     &__nav-link {
-      font-size: 1.6rem;
+      font-size: $font-size-lg-alt;
       display: block;
-      padding: 1.8rem 0;
-      color: #fff;
+      padding: $header-nav-link-padding-y-md-screen 0;
+      color: $color-text-light;
       width: 100%;
 
       &::before {
         display: block;
-        bottom: 0.5rem;
-        background-color: #deb887;
-        height: 0.2rem;
+        bottom: $spacing-sm;
+        background-color: $color-gold;
+        height: $border-width-sm * 2;
       }
-
-      &:hover {
-        color: #deb887;
-
-        &::before {
-          width: 30%;
-        }
+      &:hover::before {
+        width: $header-mobile-nav-link-hover-underline-width;
       }
     }
-
     &__nav-arrow {
       display: block;
-      color: #fff;
-      font-size: 2.4rem;
+      color: $color-text-light;
+      font-size: $header-nav-arrow-font-size;
     }
-
     &__social {
       display: flex;
     }
-
     &__right {
-      gap: 1.5rem;
+      gap: $header-right-gap-md-screen;
     }
-
     &__book {
       display: none;
     }
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: $breakpoint-xs) {
   .header {
     &__logo-icon {
-      width: 4rem;
-      height: 4rem;
+      width: $header-logo-icon-size-xs;
+      height: $header-logo-icon-size-xs;
     }
-
     &__logo-text {
-      font-size: 2.2rem;
+      font-size: $header-logo-text-font-size-sm;
     }
-
     &__nav-link {
-      font-size: 1.5rem;
-      padding: 1.6rem 0;
+      font-size: $font-size-lg;
+      padding: $header-nav-link-padding-y-sm-screen 0;
     }
-
     &__search {
-      font-size: 1.8rem;
+      font-size: $header-search-icon-font-size-sm-screen;
     }
-
     &__social {
-      gap: 1.5rem;
-
+      gap: $header-social-gap-sm-screen;
       &-link {
-        font-size: 1.8rem;
+        font-size: $font-size-xlg;
       }
     }
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: $breakpoint-xxs) {
   .header {
     &__logo-icon {
-      width: 3.6rem;
-      height: 3.6rem;
+      width: $header-logo-icon-size-xxs;
+      height: $header-logo-icon-size-xxs;
     }
-
     &__logo-text {
-      font-size: 2rem;
+      font-size: $header-logo-text-font-size-xs;
     }
   }
 }

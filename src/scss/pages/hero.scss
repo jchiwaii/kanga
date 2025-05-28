@@ -1,6 +1,6 @@
 .hero {
   position: relative;
-  height: 90vh;
+  height: $hero-height;
   width: 100%;
   overflow: hidden;
   perspective: 1000px;
@@ -14,8 +14,9 @@
   height: 100%;
   opacity: 0;
   visibility: hidden;
-  z-index: 1;
-  transition: opacity 0.8s ease;
+  z-index: $hero-z-index-slide;
+  transition: opacity $hero-slide-transition-duration $transition-easing-default,
+    transform $hero-slide-transform-transition-duration ease-out;
   background-size: cover;
   background-position: center;
 }
@@ -23,52 +24,54 @@
 .hero__slide--active {
   opacity: 1;
   visibility: visible;
-  z-index: 2;
+  z-index: $hero-z-index-slide-active;
+  animation: zoomBackground $hero-slide-bg-zoom-duration linear forwards;
 }
 
 .hero__content {
   position: absolute;
   top: 50%;
-  left: 10%;
+  left: $hero-content-left;
   transform: translateY(-50%);
-  color: #e0e0e0;
-  z-index: 3;
-  width: 60%;
+  color: $hero-text-color;
+  z-index: $hero-z-index-content;
+  width: $hero-content-width;
   will-change: transform, opacity;
 }
 
 .hero__welcome {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
+  font-size: $hero-welcome-font-size;
+  margin-bottom: $hero-welcome-margin-bottom;
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY($hero-animation-translateY-start);
 }
 
 .hero__title {
-  font-family: "Gritlen";
-  font-size: 7.2rem;
-  font-weight: 100;
-  margin-bottom: 2rem;
-  line-height: 1.2;
+  font-family: $font-gritlen;
+  font-size: $hero-title-font-size;
+  font-weight: $hero-title-font-weight;
+  margin-bottom: $hero-title-margin-bottom;
+  line-height: $hero-title-line-height;
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY($hero-animation-translateY-start);
 }
 
 .hero__btn {
   display: inline-block;
-  padding: 1rem 2rem;
-  background-color: rgba(255, 255, 255, 0.95);
-  color: #000;
+  padding: $hero-btn-padding;
+  background-color: $hero-btn-bg;
+  color: $hero-btn-text-color;
   text-decoration: none;
-  font-weight: 600;
-  border-radius: 3px;
+  font-weight: $hero-btn-font-weight;
+  border-radius: $hero-btn-border-radius;
   position: relative;
   overflow: hidden;
-  z-index: 1;
+  z-index: $z-index-default;
   opacity: 0;
-  transform: translateY(20px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform: translateY($hero-animation-translateY-start);
+  box-shadow: $hero-btn-box-shadow;
+  transition: all $transition-speed-medium-alt
+    $hero-btn-transition-timing-function;
 }
 
 .hero__slide::before {
@@ -78,74 +81,63 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3));
-  z-index: 1;
+  background: $hero-slide-overlay-gradient;
+  z-index: $z-index-default;
 }
 
 .hero__btn:hover {
-  background-color: #000;
-  color: #fff;
-  transform: translateY(-5px);
-  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.25);
-}
-
-.hero__btn:hover:before {
-  left: 100%;
+  background-color: $hero-btn-hover-bg;
+  color: $hero-btn-hover-text-color;
+  transform: $hero-btn-hover-transform;
+  box-shadow: $hero-btn-hover-box-shadow;
 }
 
 .hero__slide--fade-out {
   opacity: 0;
   visibility: visible;
-  transition: opacity 0.8s ease;
+  transition: opacity $hero-slide-transition-duration $transition-easing-default;
 }
 
 .hero__slide--fade-in {
   opacity: 1;
   visibility: visible;
-  transition: opacity 0.8s ease;
+  transition: opacity $hero-slide-transition-duration $transition-easing-default;
 }
 
 /* Text animations for active slide */
 .hero__slide--active .hero__welcome {
-  animation: simpleReveal 0.8s ease forwards 0.4s;
+  animation: simpleReveal $hero-slide-transition-duration
+    $transition-easing-default forwards $hero-animation-delay-welcome;
 }
 
 .hero__slide--active .hero__title {
-  animation: simpleReveal 0.8s ease forwards 0.7s;
+  animation: simpleReveal $hero-slide-transition-duration
+    $transition-easing-default forwards $hero-animation-delay-title;
 }
 
 .hero__slide--active .hero__btn {
-  animation: simpleReveal 0.8s ease forwards 1s;
-}
-
-@keyframes simpleReveal {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  animation: simpleReveal $hero-slide-transition-duration
+    $transition-easing-default forwards $hero-animation-delay-btn;
 }
 
 /* Progress indicator - enhanced */
 .hero__progress {
   position: absolute;
-  bottom: 40px;
+  bottom: $hero-progress-bottom;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 18px;
-  z-index: 10;
+  gap: $hero-progress-gap;
+  z-index: $hero-z-index-progress;
 }
 
 .hero__progress-dot {
-  width: 12px;
-  height: 12px;
+  width: $hero-progress-dot-size;
+  height: $hero-progress-dot-size;
   position: relative;
   cursor: pointer;
-  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: transform $hero-progress-dot-transition-duration
+    $hero-btn-transition-timing-function;
 }
 
 .hero__progress-dot::before {
@@ -155,10 +147,11 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(255, 255, 255, 0.4);
+  background: $hero-progress-dot-bg;
   border-radius: 50%;
   transform: scale(1);
-  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all $hero-progress-dot-transition-duration
+    $hero-btn-transition-timing-function;
 }
 
 .hero__progress-dot::after {
@@ -166,103 +159,73 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 6px;
-  height: 6px;
-  background: #fff;
+  width: $hero-progress-dot-inner-size;
+  height: $hero-progress-dot-inner-size;
+  background: $hero-progress-dot-inner-bg;
   border-radius: 50%;
   transform: translate(-50%, -50%) scale(0);
-  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all $hero-progress-dot-transition-duration
+    $hero-btn-transition-timing-function;
 }
 
 .hero__progress-dot:hover::before {
-  background: rgba(255, 255, 255, 0.6);
-  transform: scale(1.2);
+  background: $hero-progress-dot-hover-bg;
+  transform: scale($hero-progress-dot-hover-scale);
 }
 
 .hero__progress-dot--active {
-  transform: scale(1.2);
+  transform: scale($hero-progress-dot-active-scale);
 }
 
 .hero__progress-dot--active::before {
-  background: rgba(255, 255, 255, 0.2);
-  transform: scale(1.8);
+  background: $hero-progress-dot-active-bg;
+  transform: scale($hero-progress-dot-active-before-scale);
 }
 
 .hero__progress-dot--active::after {
   transform: translate(-50%, -50%) scale(1);
 }
 
-/* Enhanced background image effect */
-.hero__slide {
-  transition: transform 1.5s ease-out;
-  background-size: cover;
-  background-position: center;
-}
-
-.hero__slide--active {
-  animation: zoomBackground 12s linear forwards;
-}
-
-@keyframes zoomBackground {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(1.1);
-  }
-}
-
-.hero__slide::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3));
-  z-index: 1;
-}
-
 /* Media queries for responsiveness */
 @media (max-width: 950px) {
   .hero__title {
-    font-size: 6rem;
+    font-size: $hero-title-font-size-950;
   }
   .hero__welcome {
-    font-size: 1.2rem;
+    font-size: $hero-welcome-font-size-sm;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: $breakpoint-md) {
   .hero__welcome {
-    font-size: 1.2rem;
+    font-size: $hero-welcome-font-size-sm;
   }
 
   .hero__title {
-    font-size: 5.5rem;
+    font-size: $hero-title-font-size-768;
   }
 }
 
 @media (max-width: 660px) {
   .hero__title {
-    font-size: 5rem;
+    font-size: $hero-title-font-size-660;
   }
 }
 
 @media (max-width: 570px) {
   .hero__title {
-    font-size: 4.5rem;
+    font-size: $hero-title-font-size-570;
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: $breakpoint-xs) {
   .hero__title {
-    font-size: 4rem;
+    font-size: $hero-title-font-size-480;
   }
 }
 
 @media (max-width: 375px) {
   .hero__title {
-    font-size: 3rem;
+    font-size: $hero-title-font-size-375;
   }
 }

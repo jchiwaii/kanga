@@ -1,0 +1,77 @@
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes textFade {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(
+      -5px
+    ); // Corresponds to $loader-text-animation-transform-y
+  }
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(
+      30px
+    ); // Consider a variable for this if used elsewhere e.g. $animation-fadeInUp-translateY-start
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes simpleReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(
+      20px
+    ); // Consider $animation-translateY-start or similar
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes zoomBackground {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.1); // Consider $animation-scale-target or similar
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(
+      50px
+    ); // Consider $animation-translateX-start or similar
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

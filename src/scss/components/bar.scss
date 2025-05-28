@@ -1,27 +1,27 @@
 // Top Bar Styles
 .top-bar {
-  background-color: #1c1c1c;
-  border-bottom: 1px solid #2a2a2a;
-  font-size: 1rem;
-  padding: 0.5rem 0;
-  color: #e0e0e0;
+  background-color: $color-top-bar-bg;
+  border-bottom: 1px solid $color-top-bar-border;
+  font-size: $font-size-base;
+  padding: $top-bar-padding-y 0;
+  color: $color-top-bar-text;
 
   &__container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
+    max-width: $container-max-width;
     margin: 0 auto;
-    padding: 0 1rem;
+    padding: 0 $spacing-md; // 1rem approx $spacing-md if base is 16px
 
-    @media (max-width: 768px) {
-      gap: 0.5rem;
+    @media (max-width: $breakpoint-md) {
+      gap: $top-bar-item-gap-sm-screen; // 0.5rem
     }
   }
 
   &__info {
     display: flex;
-    gap: 1.5rem;
+    gap: $top-bar-item-gap-lg; // 1.5rem
     overflow-x: auto; // Allow horizontal scrolling if needed
     scrollbar-width: none; // Hide scrollbar in Firefox
     -ms-overflow-style: none; // Hide scrollbar in IE/Edge
@@ -29,49 +29,50 @@
       display: none; // Hide scrollbar in Chrome/Safari
     }
 
-    @media (max-width: 768px) {
-      gap: 0.8rem;
+    @media (max-width: $breakpoint-md) {
+      gap: $top-bar-item-gap-md-screen; // 0.8rem
       flex: 1; // Take available space
     }
 
-    @media (max-width: 576px) {
-      gap: 0.5rem;
+    @media (max-width: $breakpoint-sm) {
+      gap: $top-bar-item-gap-sm-screen; // 0.5rem
     }
   }
 
   &__item {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: $top-bar-item-icon-gap; // 0.5rem
     flex-shrink: 0; // Prevent items from shrinking
 
     i {
-      color: #d4af37; // Golden color for icons
-      font-size: 0.9rem;
+      color: $color-gold-darker; // Golden color for icons
+      font-size: $font-size-sm; // 0.9rem
       flex-shrink: 0; // Prevent icon from shrinking
     }
 
     span {
       white-space: nowrap;
 
-      @media (max-width: 992px) {
-        max-width: 150px;
+      @media (max-width: $breakpoint-lg) {
+        max-width: 150px; // Keep specific px values if they don't map to generic spacing
         overflow: hidden;
         text-overflow: ellipsis;
       }
 
-      @media (max-width: 768px) {
+      @media (max-width: $breakpoint-md) {
         max-width: 120px;
       }
 
-      @media (max-width: 576px) {
+      @media (max-width: $breakpoint-sm) {
         max-width: 80px;
       }
     }
 
     // Hide the least important item on very small screens
     &:nth-child(3) {
-      @media (max-width: 480px) {
+      @media (max-width: $breakpoint-xs) {
+        // 480px
         display: none;
       }
     }
@@ -79,16 +80,16 @@
 
   &__social {
     display: flex;
-    gap: 0.8rem;
+    gap: $top-bar-social-gap-md-screen; // 0.8rem - using $top-bar-item-gap-md-screen as it's same value
     align-items: center;
     flex-shrink: 0; // Prevent from shrinking
 
-    @media (max-width: 768px) {
-      gap: 0.5rem;
+    @media (max-width: $breakpoint-md) {
+      gap: $top-bar-social-gap-sm-screen; // 0.5rem
     }
 
-    @media (max-width: 576px) {
-      gap: 0.3rem;
+    @media (max-width: $breakpoint-sm) {
+      gap: $top-bar-social-gap-xs; // 0.3rem
     }
   }
 
@@ -96,31 +97,34 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: transform 0.2s ease;
+    transition: transform $transition-speed-very-fast $transition-easing-default;
 
     &:hover {
-      transform: translateY(-2px);
+      transform: translateY(
+        -2px
+      ); // Fine-grained value, keep as is or make var like $spacing-xxs
     }
 
     .social-icon {
-      width: 16px;
-      height: 16px;
-      transition: opacity 0.2s ease;
+      width: $top-bar-icon-size;
+      height: $top-bar-icon-size;
+      transition: opacity $transition-speed-very-fast $transition-easing-default;
 
-      @media (max-width: 576px) {
-        width: 14px;
-        height: 14px;
+      @media (max-width: $breakpoint-sm) {
+        width: $top-bar-icon-size-sm;
+        height: $top-bar-icon-size-sm;
       }
 
       &:hover {
-        opacity: 0.8;
+        opacity: 0.8; // Keep specific opacity or var if used elsewhere
       }
     }
 
     // Hide some social icons on very small screens
     &:nth-child(4),
     &:nth-child(5) {
-      @media (max-width: 480px) {
+      @media (max-width: $breakpoint-xs) {
+        // 480px
         display: none;
       }
     }
@@ -129,6 +133,6 @@
 
 // Style for selected text
 .top-bar ::selection {
-  background-color: #d4af37; // Golden color when text is selected
-  color: #000;
+  background-color: $color-gold-darker; // Golden color when text is selected
+  color: $color-text-dark;
 }

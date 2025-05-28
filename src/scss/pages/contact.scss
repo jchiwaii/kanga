@@ -44,31 +44,31 @@
 }
 
 .contact-section {
-  padding: 8rem 0;
-  background-color: #fff;
+  padding: $contact-section-padding-y 0;
+  background-color: $color-background-default;
 
   .container {
-    max-width: 120rem;
+    max-width: $container-max-width-contact;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0 $contact-container-padding-x;
   }
 
   .contact-wrapper {
     display: grid;
     grid-template-columns: 3fr 2fr;
-    gap: 5rem;
+    gap: $contact-wrapper-gap;
   }
 }
 
 // Form Column Styles
 .contact-form-column {
   .contact-title {
-    font-size: 3.6rem;
-    font-weight: 300;
-    color: #333;
-    margin-bottom: 4rem;
-    line-height: 1.2;
-    letter-spacing: 0.03em;
+    font-size: $font-size-contact-title;
+    font-weight: $font-weight-light;
+    color: $color-text-default;
+    margin-bottom: $contact-title-margin-bottom;
+    line-height: $contact-title-line-height;
+    letter-spacing: $letter-spacing-contact-title;
     position: relative;
   }
 
@@ -76,13 +76,13 @@
     .form-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 2.5rem;
-      margin-bottom: 2.5rem;
+      gap: $contact-form-row-gap;
+      margin-bottom: $contact-form-row-margin-bottom;
     }
 
     .form-group {
-      margin-bottom: 2rem;
-      @include form-focus-effect;
+      margin-bottom: $contact-form-group-margin-bottom;
+      @include form-focus-effect($color-gold, $contact-form-focus-line-height);
 
       &.full-width {
         grid-column: span 2;
@@ -91,43 +91,50 @@
 
     .form-control {
       width: 100%;
-      padding: 1.6rem 2rem;
+      padding: $contact-form-control-padding-y $contact-form-control-padding-x;
       border: none;
-      background-color: #f9f8f6;
-      font-size: 1.5rem;
-      font-weight: 300;
-      color: #333;
+      background-color: $color-form-control-bg;
+      font-size: $font-size-form-control;
+      font-weight: $font-weight-light;
+      color: $color-text-default;
       outline: none;
       font-family: inherit;
-      transition: all 0.3s ease;
-      border-bottom: 1px solid rgba(60, 60, 77, 0.1);
+      transition: all $transition-speed-fast $transition-easing-default;
+      border-bottom: $contact-form-focus-line-height solid
+        $color-form-control-border;
 
       &:hover {
-        background-color: #f5f3ef;
+        background-color: $color-form-control-bg-hover;
       }
 
       &:focus {
-        background-color: #f5f3ef;
-        border-bottom: 1px solid #deb887;
+        background-color: $color-form-control-bg-hover;
       }
 
       &::placeholder {
-        color: rgba(51, 51, 51, 0.5);
-        font-weight: 300;
+        color: $color-form-placeholder;
+        font-weight: $font-weight-light;
       }
     }
 
     textarea.form-control {
       resize: none;
-      height: 15rem;
+      height: $contact-textarea-height;
     }
 
     .form-submit {
-      margin-top: 2rem;
+      margin-top: $contact-form-submit-margin-top;
 
       .submit-btn {
-        @include luxury-button;
-        font-size: 1.4rem;
+        @include luxury-button(
+          $bg: $color-footer-bg,
+          $text: $color-text-light,
+          $hover-fill: $color-gold,
+          $radius: $default-border-radius,
+          $padding: $contact-submit-btn-padding,
+          $font-weight: $font-weight-normal
+        );
+        font-size: $font-size-contact-submit-btn;
       }
     }
   }
@@ -141,16 +148,16 @@
 
   .contact-person {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: $contact-person-section-margin-bottom;
     position: relative;
 
     .person-image {
-      width: 18rem;
-      height: 18rem;
-      margin: 0 auto 2.5rem;
+      width: $contact-person-image-size;
+      height: $contact-person-image-size;
+      margin: 0 auto $contact-person-image-margin-bottom;
       overflow: hidden;
       border-radius: 50%;
-      box-shadow: 0 1rem 3rem rgba(222, 184, 135, 0.15);
+      box-shadow: $box-shadow-contact-person-image;
       position: relative;
 
       &::before {
@@ -160,16 +167,18 @@
         left: 0;
         right: 0;
         bottom: 0;
-        border: 1px solid rgba(222, 184, 135, 0.3);
+        border: $contact-form-focus-line-height solid
+          $color-contact-person-image-border;
         border-radius: 50%;
-        z-index: 1;
+        z-index: $z-index-default;
       }
 
       img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        transition: transform 0.8s ease;
+        transition: transform $transition-speed-slower
+          $transition-easing-default;
 
         &:hover {
           transform: scale(1.05);
@@ -178,20 +187,20 @@
     }
 
     .person-name {
-      font-size: 2.2rem;
-      color: #333;
-      margin-bottom: 0.8rem;
-      font-weight: 400;
+      font-size: $font-size-contact-person-name;
+      color: $color-text-default;
+      margin-bottom: $contact-person-name-margin-bottom;
+      font-weight: $font-weight-normal;
     }
 
     .person-title {
-      font-size: 1.4rem;
-      color: #deb887;
-      font-weight: 300;
+      font-size: $font-size-contact-person-title;
+      color: $color-gold;
+      font-weight: $font-weight-light;
       margin: 0;
       position: relative;
       display: inline-block;
-      padding-bottom: 1rem;
+      padding-bottom: $contact-person-title-padding-bottom;
 
       &::after {
         content: "";
@@ -199,56 +208,56 @@
         bottom: 0;
         left: 50%;
         transform: translateX(-50%);
-        width: 4rem;
-        height: 1px;
-        background-color: rgba(222, 184, 135, 0.5);
+        width: $contact-person-title-underline-width;
+        height: $contact-person-title-underline-height;
+        background-color: $color-contact-person-title-underline;
       }
     }
   }
 
   .contact-text {
     p {
-      font-size: 1.6rem;
-      line-height: 1.8;
-      color: #333;
-      font-weight: 300;
-      letter-spacing: 0.01em;
+      font-size: $font-size-contact-text;
+      line-height: $contact-text-line-height;
+      color: $color-text-default;
+      font-weight: $font-weight-light;
+      letter-spacing: $letter-spacing-contact-text;
       text-align: center;
-      padding: 0 2rem;
+      padding: 0 $contact-info-text-padding-x;
     }
   }
 }
 
 // Error message styles for form validation
 .error-message {
-  color: #e74c3c;
-  font-size: 1.2rem;
-  margin-top: 0.5rem;
-  min-height: 1.2rem;
+  color: $color-error;
+  font-size: $font-size-error-message;
+  margin-top: $contact-error-message-margin-top;
+  min-height: $contact-error-message-min-height;
 }
 
 // Responsive Styles
-@media (max-width: 1200px) {
+@media (max-width: $breakpoint-xl) {
   .contact-section {
-    padding: 7rem 0;
+    padding: $contact-section-padding-y-lg 0;
 
     .contact-wrapper {
-      gap: 4rem;
+      gap: $contact-wrapper-gap-lg;
     }
   }
 
   .contact-form-column {
     .contact-title {
-      font-size: 3.2rem;
+      font-size: $font-size-contact-title-lg;
     }
   }
 }
 
-@media (max-width: 992px) {
+@media (max-width: $breakpoint-lg) {
   .contact-section {
     .contact-wrapper {
       grid-template-columns: 1fr;
-      gap: 5rem;
+      gap: $contact-wrapper-gap;
     }
   }
 
@@ -263,33 +272,33 @@
 
     .contact-person {
       .person-image {
-        width: 15rem;
-        height: 15rem;
+        width: $contact-person-image-size-lg;
+        height: $contact-person-image-size-lg;
       }
     }
 
     .contact-text {
-      max-width: 60rem;
+      max-width: $contact-text-max-width-lg;
       margin: 0 auto;
     }
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: $breakpoint-md) {
   .contact-section {
-    padding: 6rem 0;
+    padding: $contact-section-padding-y-md 0;
   }
 
   .contact-form-column {
     .contact-title {
-      font-size: 2.8rem;
-      margin-bottom: 3.5rem;
+      font-size: $font-size-contact-title-md;
+      margin-bottom: $contact-title-margin-bottom-md;
     }
 
     .contact-form {
       .form-row {
         grid-template-columns: 1fr;
-        gap: 0;
+        gap: $contact-form-row-gap-md;
       }
 
       .form-group {
@@ -301,26 +310,26 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: $breakpoint-xs) {
   .contact-section {
-    padding: 5rem 0;
+    padding: $contact-section-padding-y-xs 0;
   }
 
   .contact-form-column {
     .contact-title {
-      font-size: 2.4rem;
-      margin-bottom: 3rem;
+      font-size: $font-size-contact-title-xs;
+      margin-bottom: $contact-title-margin-bottom-xs;
     }
 
     .contact-form {
       .form-control {
-        padding: 1.4rem 1.6rem;
+        padding: $contact-form-control-padding-xs;
       }
 
       .form-submit {
         .submit-btn {
           width: 100%;
-          padding: 1.4rem 0;
+          padding: $contact-submit-btn-padding-xs;
         }
       }
     }
@@ -329,16 +338,16 @@
   .contact-info-column {
     .contact-person {
       .person-name {
-        font-size: 2rem;
+        font-size: $font-size-contact-person-name-xs;
       }
 
       .person-title {
-        font-size: 1.3rem;
+        font-size: $font-size-contact-person-title-xs;
       }
     }
 
     .contact-text p {
-      font-size: 1.5rem;
+      font-size: $font-size-contact-text-xs;
     }
   }
 }

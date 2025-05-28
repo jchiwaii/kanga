@@ -1,156 +1,186 @@
 .stats-counter {
-  padding: 70px 0;
-  background-color: #f9f7f4;
+  padding: $stats-padding-y 0;
+  background-color: $color-stats-bg;
 
   .container {
-    max-width: 1200px;
+    max-width: $container-max-width;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 $stats-container-padding-x;
   }
 
   .stats-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+    gap: $stats-grid-gap;
 
-    @media (max-width: 1100px) {
-      gap: 15px;
+    @media (max-width: $breakpoint-stats-lg) {
+      // 1100px
+      gap: $stats-grid-gap-lg;
     }
 
-    @media (max-width: 991px) {
+    @media (max-width: $breakpoint-lg) {
+      // 991px
       grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
+      gap: $stats-grid-gap; // Reverts to 20px gap
     }
 
-    @media (max-width: 576px) {
+    @media (max-width: $breakpoint-sm) {
+      // 576px
       grid-template-columns: 1fr;
-      gap: 15px;
-      max-width: 320px;
+      gap: $stats-grid-gap-lg; // 15px gap
+      max-width: $stats-grid-max-width-sm;
       margin: 0 auto;
     }
   }
 
   .stat-item {
-    height: 280px;
+    height: $stats-item-height;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 25px 20px;
+    padding: $stats-item-padding-y $stats-item-padding-x;
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform $transition-speed-fast $transition-easing-default,
+      box-shadow $transition-speed-fast $transition-easing-default;
     position: relative;
     overflow: hidden;
 
     &::before {
       content: "";
       position: absolute;
-      top: -10px;
-      left: -10px;
-      width: 20px;
-      height: 20px;
-      border-top: 1px solid rgba(255, 255, 255, 0.5);
-      border-left: 1px solid rgba(255, 255, 255, 0.5);
+      top: -$spacing-sm; // -10px approx
+      left: -$spacing-sm; // -10px approx
+      width: $stats-item-corner-size;
+      height: $stats-item-corner-size;
+      border-top: 1px solid $color-stats-item-corner-border;
+      border-left: 1px solid $color-stats-item-corner-border;
+      transition: all $transition-speed-fast $transition-easing-default; // Added for hover transition
     }
 
     &::after {
       content: "";
       position: absolute;
-      bottom: -10px;
-      right: -10px;
-      width: 20px;
-      height: 20px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-      border-right: 1px solid rgba(255, 255, 255, 0.5);
+      bottom: -$spacing-sm; // -10px approx
+      right: -$spacing-sm; // -10px approx
+      width: $stats-item-corner-size;
+      height: $stats-item-corner-size;
+      border-bottom: 1px solid $color-stats-item-corner-border;
+      border-right: 1px solid $color-stats-item-corner-border;
+      transition: all $transition-speed-fast $transition-easing-default; // Added for hover transition
     }
 
     &:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      transform: translateY(-5px); // Keep specific value or create variable
+      box-shadow: $box-shadow-stats-item-hover;
+
+      &::before,
+      &::after {
+        width: $stats-item-corner-size-hover;
+        height: $stats-item-corner-size-hover;
+        opacity: 0.8; // Keep specific opacity or create var
+      }
     }
 
-    @media (max-width: 1100px) {
-      height: 260px;
-      padding: 20px 15px;
+    @media (max-width: $breakpoint-stats-lg) {
+      // 1100px
+      height: $stats-item-height-lg;
+      padding: $stats-item-padding-y-lg $stats-item-padding-x-lg;
     }
 
-    @media (max-width: 991px) {
-      height: 240px;
+    @media (max-width: $breakpoint-lg) {
+      // 991px
+      height: $stats-item-height-md;
     }
 
-    @media (max-width: 768px) {
-      height: 220px;
+    @media (max-width: $breakpoint-md) {
+      // 768px
+      height: $stats-item-height-sm;
     }
 
-    @media (max-width: 576px) {
-      height: 200px;
-      padding: 20px 15px;
+    @media (max-width: $breakpoint-sm) {
+      // 576px
+      height: $stats-item-height-xs;
+      padding: $stats-item-padding-y-xs $stats-item-padding-x-xs;
     }
 
     &.silver-bg {
-      background-color: rgba(189, 189, 189, 0.9);
-      color: #ffffff;
+      background-color: $color-stats-item-silver-bg;
+      color: $color-text-light;
     }
 
     &.gold-bg {
-      background-color: rgba(222, 184, 135, 0.9);
-      color: #ffffff;
+      background-color: $color-stats-item-gold-bg;
+      color: $color-text-light;
     }
   }
 
   .stat-icon {
-    margin-bottom: 15px;
+    margin-bottom: $stats-icon-margin-bottom;
     opacity: 0;
-    transform: translateY(20px);
-    animation: fadeUp 0.6s ease forwards;
-    animation-delay: 0.2s;
+    transform: translateY(20px); // Keep specific transform for animation start
+    animation: fadeUp $animation-fadeup-duration $transition-easing-default
+      forwards;
+    animation-delay: $animation-fadeup-delay-icon;
 
     img {
-      width: 50px;
-      height: 50px;
+      width: $stats-icon-size;
+      height: $stats-icon-size;
       object-fit: contain;
-      filter: brightness(0) invert(1);
-      opacity: 0.85;
+      filter: brightness(0) invert(1); // Keep specific filter
+      opacity: 0.85; // Keep specific opacity
 
-      @media (max-width: 991px) {
-        width: 45px;
-        height: 45px;
+      @media (max-width: $breakpoint-lg) {
+        // 991px
+        width: $stats-icon-size-md;
+        height: $stats-icon-size-md;
       }
 
-      @media (max-width: 576px) {
-        width: 40px;
-        height: 40px;
+      @media (max-width: $breakpoint-sm) {
+        // 576px
+        width: $stats-icon-size-sm;
+        height: $stats-icon-size-sm;
       }
     }
   }
 
   .stat-number {
-    font-size: 58px;
-    font-weight: 300;
-    margin-bottom: 10px;
+    font-size: $font-size-stats-number;
+    font-weight: $font-weight-light;
+    margin-bottom: $stats-number-margin-bottom;
     line-height: 1;
-    letter-spacing: -1px;
+    letter-spacing: $letter-spacing-stats-number;
     opacity: 0;
-    transform: translateY(20px);
-    animation: fadeUp 0.6s ease forwards;
-    animation-delay: 0.4s;
+    transform: translateY(20px); // Keep specific transform for animation start
+    animation: fadeUp $animation-fadeup-duration $transition-easing-default
+      forwards;
+    animation-delay: $animation-fadeup-delay-number;
 
-    @media (max-width: 1100px) {
-      font-size: 52px;
+    @media (max-width: $breakpoint-stats-lg) {
+      // 1100px
+      font-size: $font-size-stats-number-lg;
     }
 
-    @media (max-width: 991px) {
-      font-size: 48px;
+    @media (max-width: $breakpoint-lg) {
+      // 991px
+      font-size: $font-size-stats-number-md;
     }
 
-    @media (max-width: 768px) {
-      font-size: 44px;
+    @media (max-width: $breakpoint-md) {
+      // 768px
+      font-size: $font-size-stats-number-sm;
     }
 
-    @media (max-width: 576px) {
-      font-size: 42px;
+    @media (max-width: $breakpoint-sm) {
+      // 576px
+      font-size: $font-size-stats-number-xs;
     }
 
+    // The :after pseudo-element for a plus sign on the last item
+    // This logic is complex for pure SCSS variables if it depends on dynamic content.
+    // Keeping as is, assuming the class logic implies it's the last relevant counter.
+    // If there were a class like .stat-item--has-plus, it would be easier.
+    // For now, this specific selector remains.
     &:after {
       content: "";
       .stat-item:last-child & {
@@ -160,37 +190,36 @@
   }
 
   .stat-label {
-    font-size: 1.6rem;
-    font-weight: 300;
-    letter-spacing: 1px;
-    opacity: 0.9;
-    transform: translateY(20px);
-    opacity: 0;
-    animation: fadeUp 0.6s ease forwards;
-    animation-delay: 0.6s;
+    font-size: $font-size-stats-label;
+    font-weight: $font-weight-light;
+    letter-spacing: $letter-spacing-sm;
+    opacity: 0.9; // Keep initial opacity for animation, or use 0 and animate to 0.9
+    transform: translateY(20px); // Keep specific transform for animation start
+    // opacity: 0; // Duplicate opacity, animation handles this
+    animation: fadeUp $animation-fadeup-duration $transition-easing-default
+      forwards;
+    animation-delay: $animation-fadeup-delay-label;
 
-    @media (max-width: 991px) {
-      font-size: 1.5rem;
+    @media (max-width: $breakpoint-lg) {
+      // 991px
+      font-size: $font-size-stats-label-md;
     }
 
-    @media (max-width: 576px) {
-      font-size: 1.4rem;
+    @media (max-width: $breakpoint-sm) {
+      // 576px
+      font-size: $font-size-stats-label-sm;
     }
   }
 }
 
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+// fadeUp keyframes are in _animations.scss
 
 // Additional refinement for borders on hover
-.stats-counter .stat-item:hover::before,
-.stats-counter .stat-item:hover::after {
-  width: 25px;
-  height: 25px;
-  opacity: 0.8;
-  transition: all 0.3s ease;
-}
+// This specific selector logic for :hover needs to remain as is.
+// .stats-counter .stat-item:hover::before,
+// .stats-counter .stat-item:hover::after {
+//   width: $stats-item-corner-size-hover;
+//   height: $stats-item-corner-size-hover;
+//   opacity: 0.8;
+//   transition: all $transition-speed-fast $transition-easing-default;
+// } // This is already handled in .stat-item:hover &::before / &::after

@@ -1,0 +1,715 @@
+// Font Families
+$font-primary: "JUST Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-secondary: Georgia, serif; // Example - Keep or remove if not used
+$font-just-sans: "JUST Sans";
+$font-gritlen: "Gritlen", sans-serif; // Gallery title font
+$font-rossa: "Rossa", sans-serif; // Header logo text font
+
+// Font Weights
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-semibold: 600; // For About main heading
+$font-weight-medium: 500; // For About service tag
+$font-weight-bold: 700;
+
+// Colors
+// Theme colors
+$color-gold: #deb887;
+$color-gold-darker: #d4af37;
+$color-dark-gray: #333;
+$color-darker-gray: #222; // Header mobile nav bg
+$color-brownish: #b19b77;
+$color-heart: #ff6b6b;
+
+// Standard colors
+$color-primary: #007bff; // Example Blue
+$color-secondary: #6c757d; // Example Gray
+$color-accent: #ffc107; // Example Yellow
+$color-error: #e74c3c;
+
+$color-text-default: $color-dark-gray;
+$color-text-light: #fff;
+$color-text-dark: #000;
+$color-text-light-gray: #777;
+$color-text-muted-light: rgba(255, 255, 255, 0.7);
+$color-text-muted-dark: rgba(0, 0, 0, 0.7);
+
+$color-background-default: #fff;
+$color-background-light-gray: #fafafa;
+$color-border-default: #ddd;
+$color-border-light-alpha: rgba(255, 255, 255, 0.1); // Header mobile nav border
+
+// Overlay & Glare Colors
+$color-overlay-dark: rgba(0, 0, 0, 0.5);
+$color-glare-start-end: rgba(255, 255, 255, 0);
+$color-glare-middle: rgba(255, 255, 255, 0.15);
+
+// Component Specific Colors
+// Top Bar
+$color-top-bar-bg: #1c1c1c;
+$color-top-bar-border: #2a2a2a;
+$color-top-bar-text: #e0e0e0;
+// Footer
+$color-footer-bg: #3c3c4d;
+$color-footer-link-copyright: #ccc;
+$color-footer-divider: rgba(255, 255, 255, 0.3);
+$color-footer-border: rgba(
+  255,
+  255,
+  255,
+  0.1
+); // Same as $color-border-light-alpha
+$color-footer-social-link-hover-bg: #8585a9;
+// Header
+$header-mobile-toggle-bar-bg: $color-dark-gray;
+$header-mobile-nav-bg: $color-darker-gray;
+
+// Stats Counter
+$color-stats-bg: #f9f7f4;
+$color-stats-item-silver-bg: rgba(189, 189, 189, 0.9);
+$color-stats-item-gold-bg: rgba($color-gold, 0.9);
+$color-stats-item-corner-border: rgba($color-text-light, 0.5);
+
+// Services Highlight
+$color-services-highlight-bg: $color-footer-bg;
+$color-banner-cta-hover: rgba($color-gold, 0.8);
+
+// About Page
+$color-about-accent: #dbc8ac;
+
+// Contact Page
+$color-form-control-bg: #f9f8f6;
+$color-form-control-bg-hover: #f5f3ef;
+$color-form-control-border: rgba(60, 60, 77, 0.1);
+$color-form-placeholder: rgba($color-text-default, 0.5);
+$color-contact-person-image-shadow: rgba($color-gold, 0.15);
+$color-contact-person-image-border: rgba($color-gold, 0.3);
+$color-contact-person-title-underline: rgba($color-gold, 0.5);
+
+// Spacing (base unit 8px, 1rem = 16px target)
+$spacing-unit: 8px;
+$spacing-xxs: $spacing-unit * 0.25; // 2px (0.125rem)
+$spacing-xs: $spacing-unit * 0.5; // 4px (0.25rem)
+$spacing-sm: $spacing-unit; // 8px (0.5rem)
+$spacing-smd: $spacing-unit * 1.5; // 12px (0.75rem)
+$spacing-md: $spacing-unit * 2; // 16px (1rem)
+$spacing-md-lg: $spacing-unit * 2.5; // 20px (1.25rem)
+$spacing-lg: $spacing-unit * 3; // 24px (1.5rem)
+$spacing-lg-xl: $spacing-unit * 3.75; // 30px (1.875rem)
+$spacing-xlg: $spacing-unit * 3.5; // 28px (1.75rem) - Can be $spacing-lg + $spacing-xs
+$spacing-xl: $spacing-unit * 4; // 32px (2rem)
+$spacing-xxl: $spacing-unit * 5; // 40px (2.5rem)
+$spacing-xxxl: $spacing-unit * 6; // 48px (3rem)
+$spacing-xxxxl: $spacing-unit * 10; // 80px (5rem)
+$spacing-xxxxxl: $spacing-unit * 12.5; // 100px (6.25rem)
+
+// Border specific spacing
+$border-width-sm: 0.1rem; // 1.6px, often 1px or 2px used
+
+// Font Sizes (target 1rem = 16px)
+$font-size-base: 1rem; // 16px
+$font-size-xs: 0.8rem; // 12.8px
+$font-size-sm: 0.9rem; // 14.4px
+$font-size-smd: 1.25rem; // 20px - Header search icon
+$font-size-md: 1.3rem; // 20.8px - Header nav link (1024px)
+$font-size-md-alt: 1.4rem; // 22.4px - Header call text, Header nav link (desktop)
+$font-size-lg: 1.5rem; // 24px - Header nav link (480px)
+$font-size-lg-alt: 1.6rem; // 25.6px - Header nav link (768px)
+$font-size-xlg: 1.8rem; // 28.8px - Header call number, Header search icon (480px), Header social link (480px)
+$font-size-xl: 22px / 16px * 1rem; // 1.375rem (22px) - Gallery overlay h3
+$font-size-xxl: 40px / 16px * 1rem; // 2.5rem (40px) - Gallery title sm
+$font-size-xxxl: 50px / 16px * 1rem; // 3.125rem (50px) - Gallery title lg
+$font-size-display: 60px / 16px * 1rem; // 3.75rem (60px) - Gallery title
+$font-size-error-message: 1.2rem; // Contact form error message
+
+// Header specific font sizes
+$header-logo-text-font-size: 2.8rem; // 44.8px
+$header-logo-text-font-size-lg: 2.6rem; // 41.6px (1024px)
+$header-logo-text-font-size-md: 2.4rem; // 38.4px (768px)
+$header-logo-text-font-size-sm: 2.2rem; // 35.2px (480px)
+$header-logo-text-font-size-xs: 2rem; // 32px (360px)
+$header-close-button-font-size: 3.2rem; // 51.2px
+$header-nav-arrow-font-size: 2.4rem; // 38.4px
+$header-social-link-font-size: 2rem; // 32px (desktop)
+
+// Stats Counter Font Sizes
+$font-size-stats-number: 58px / 16px * 1rem; // 3.625rem
+$font-size-stats-number-lg: 52px / 16px * 1rem; // 3.25rem (1100px screen)
+$font-size-stats-number-md: 48px / 16px * 1rem; // 3rem (991px screen)
+$font-size-stats-number-sm: 44px / 16px * 1rem; // 2.75rem (768px screen)
+$font-size-stats-number-xs: 42px / 16px * 1rem; // 2.625rem (576px screen)
+$font-size-stats-label: 1.6rem; // Matches $font-size-lg-alt
+$font-size-stats-label-md: 1.5rem; // Matches $font-size-lg (991px screen)
+$font-size-stats-label-sm: 1.4rem; // Matches $font-size-md-alt (576px screen)
+
+// Services Highlight Font Sizes
+$font-size-banner-title: 4rem; // 64px
+$font-size-banner-title-md: 3.4rem; // 54.4px (768px)
+$font-size-banner-title-sm: 3rem; // 48px (576px)
+$font-size-feature-title: 2rem; // 32px
+
+// About Page Font Sizes
+$font-size-about-service-tag: 14px / 16px * 1rem;
+$font-size-about-service-tag-md: 12px / 16px * 1rem; // For 768px breakpoint
+$font-size-about-main-heading: 42px / 16px * 1rem; // 2.625rem
+$font-size-about-main-heading-lg: 38px / 16px * 1rem; // 2.375rem (1100px)
+$font-size-about-main-heading-md: 36px / 16px * 1rem; // 2.25rem (992px)
+$font-size-about-main-heading-sm: 32px / 16px * 1rem; // 2rem (768px)
+$font-size-about-main-heading-xs: 28px / 16px * 1rem; // 1.75rem (576px)
+$font-size-about-main-heading-xxs: 26px / 16px * 1rem; // 1.625rem (480px)
+$font-size-about-description: $font-size-lg-alt; // 1.6rem
+$font-size-about-description-md: $font-size-lg; // 1.5rem (768px)
+$font-size-about-feature-item: $font-size-lg-alt; // 1.6rem
+$font-size-about-feature-item-md: $font-size-lg; // 1.5rem (768px)
+$font-size-about-arrow: 18px / 16px * 1rem; // 1.125rem
+$font-size-about-arrow-sm: 1rem; // 16px (576px)
+
+// Contact Page Font Sizes
+$font-size-contact-title: 3.6rem;
+$font-size-contact-title-lg: 3.2rem; // 1200px breakpoint
+$font-size-contact-title-md: 2.8rem; // For 768px breakpoint
+$font-size-contact-title-xs: 2.4rem; // For 480px breakpoint
+$font-size-form-control: $font-size-lg; // 1.5rem
+$font-size-contact-submit-btn: $font-size-md-alt; // 1.4rem
+$font-size-contact-person-name: 2.2rem / 16px * 1rem; // 1.375rem
+$font-size-contact-person-name-xs: 2rem; // For 480px breakpoint
+$font-size-contact-person-title: $font-size-md-alt; // 1.4rem
+$font-size-contact-person-title-xs: 1.3rem; // For 480px breakpoint
+$font-size-contact-text: $font-size-lg-alt; // 1.6rem
+$font-size-contact-text-xs: 1.5rem; // For 480px breakpoint
+
+// Line Heights
+$banner-title-line-height: 1.2;
+$banner-description-line-height: 1.8;
+$feature-text-line-height: 1.6;
+$about-description-line-height: 1.7;
+$about-description-line-height-md: 1.6; // 768px
+$contact-title-line-height: 1.2;
+$contact-text-line-height: 1.8;
+
+// Letter Spacing
+$letter-spacing-sm: 1px;
+$letter-spacing-md: 2px; // For about section service tag
+$letter-spacing-lg: 4px;
+$letter-spacing-stats-number: -1px;
+$banner-subtitle-letter-spacing: 0.3rem;
+$banner-cta-letter-spacing: 0.1rem;
+$letter-spacing-about-service-tag-sm: 1.5px; // For 480px breakpoint
+$letter-spacing-contact-title: 0.03em;
+$letter-spacing-contact-text: 0.01em;
+
+// Breakpoints
+$breakpoint-xxs: 360px;
+$breakpoint-xs: 480px;
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-lg-alt: 1024px; // For header specific changes
+$breakpoint-stats-lg: 1100px; // New breakpoint for stats
+$breakpoint-xl: 1200px;
+
+// Container widths
+$container-max-width: 1200px;
+$header-container-max-width: 120rem;
+$footer-container-max-width: 120rem;
+$stats-grid-max-width-sm: 320px;
+$container-padding-x-about-default: 15px;
+$container-padding-x-about-xl-screen: 30px;
+$container-padding-x-about-sm-screen: 20px;
+$about-main-heading-max-width: 90%;
+$container-max-width-contact: 120rem; // Specific for contact page
+$contact-text-max-width-lg: 60rem; // For 992px breakpoint
+
+// Z-indexes - Organized from low to high
+$z-index-default: 1;
+$z-index-above: 2;
+$z-index-header-dropdown-arrow: 5;
+$z-index-header-logo: 10;
+$z-index-sticky: 100;
+$z-index-dropdown: 500;
+$z-index-scroll-to-top: 999;
+$z-index-header-nav-mobile: 1000;
+$z-index-modal: 1000;
+$z-index-header-mobile-toggle: 1001;
+$z-index-loader: 9999; // Highest for page loader
+
+// Other common variables
+$default-border-radius: 0.4rem;
+$border-radius-sm: 3px;
+$box-shadow-sm: 0 0.2rem 1rem rgba(0, 0, 0, 0.1);
+$box-shadow-md: 0 0.5rem 2rem rgba(0, 0, 0, 0.15);
+$default-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+$box-shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.1);
+$box-shadow-scroll-to-top: 0 2px 10px rgba(0, 0, 0, 0.3);
+$box-shadow-stats-item-hover: 0 10px 25px rgba(0, 0, 0, 0.1);
+$box-shadow-contact-person-image: 0 1rem 3rem $color-contact-person-image-shadow;
+
+// Transitions
+$transition-speed-very-fast: 0.2s;
+$transition-speed-fast: 0.3s;
+$transition-speed-medium: 0.5s;
+$transition-speed-medium-alt: 0.4s; // For header transitions and nav-hover-effect original
+$transition-speed-slow: 0.7s;
+$transition-speed-slower: 0.8s;
+$transition-speed-very-slow: 2.5s;
+$transition-easing-default: ease;
+$transition-cubic-bezier-nav: cubic-bezier(
+  0.77,
+  0,
+  0.175,
+  1
+); // Header mobile nav
+$transition-delay-sm: 0.3s; // For about content delayed appearance
+$transition-speed-about-appear: 0.8s; // Specific for about section element appearance
+$transition-delay-about-feature-1: 0.4s;
+$transition-delay-about-feature-2: 0.6s;
+$transition-delay-about-feature-3: 0.8s;
+$transition-delay-about-feature-4: 1s;
+
+// Animations
+$animation-fadeup-duration: 0.6s;
+$animation-fadeup-delay-icon: 0.2s;
+$animation-fadeup-delay-number: 0.4s;
+$animation-fadeup-delay-label: 0.6s;
+$animation-fadeInUp-translateY-start: 30px;
+
+// Component Specific Variables
+
+// Top Bar
+$top-bar-padding-y: $spacing-sm;
+$top-bar-icon-size: 2rem;
+$top-bar-icon-size-sm: 1.8rem;
+$top-bar-item-gap-lg: $spacing-lg;
+$top-bar-item-gap-md-screen: $spacing-smd;
+$top-bar-item-gap-sm-screen: $spacing-sm;
+$top-bar-item-icon-gap: $spacing-sm;
+$top-bar-social-gap-md-screen: $spacing-smd;
+$top-bar-social-gap-sm-screen: $spacing-sm;
+$top-bar-social-gap-xs: $spacing-xs * 1.5; // 0.3rem (6px)
+
+// Scroll-to-top Button
+$scroll-to-top-size: 5rem;
+$scroll-to-top-size-md: 4.5rem;
+$scroll-to-top-position: $spacing-xl;
+$scroll-to-top-position-md: $spacing-lg;
+$scroll-to-top-icon-height: 2rem;
+
+// Footer
+$footer-padding-top: $spacing-xxxxl;
+$footer-padding-bottom: $spacing-xxxl;
+$footer-container-padding-x: $spacing-xl;
+$footer-top-margin-bottom: $spacing-xxxl;
+$footer-top-gap-md: $spacing-xxl;
+$footer-nav-links-gap: $spacing-xxl;
+$footer-nav-links-gap-md-main: $spacing-lg;
+$footer-nav-links-gap-md-cross: $spacing-md;
+$footer-contact-gap: $spacing-lg;
+$footer-bottom-padding-top: $spacing-xxl;
+$footer-bottom-gap-md: $spacing-lg;
+$footer-copyright-gap: $spacing-xs;
+$footer-copyright-heart-margin-x: $spacing-xxs;
+$footer-social-gap: $spacing-md;
+$footer-social-gap-xs: $spacing-smd;
+$footer-social-link-size: 4rem;
+$footer-social-link-size-xs: 3.5rem;
+$footer-social-icon-height: 1.8rem;
+
+// Gallery
+$gallery-title-section-height: 30rem;
+$gallery-title-section-height-sm: 20rem;
+$gallery-image-container-height: 40rem;
+$gallery-overlay-padding: $spacing-xl;
+
+// Header (Consolidated)
+$header-padding-y: $spacing-lg;
+$header-padding-x: $spacing-xl;
+$header-padding-y-lg-screen: $spacing-smd;
+$header-padding-x-lg-screen: $spacing-xl;
+$header-padding-y-md-screen: $spacing-md;
+$header-padding-x-md-screen: $spacing-lg;
+
+$header-logo-gap: $spacing-md;
+$header-logo-icon-size: 4.5rem;
+$header-logo-icon-size-xs: 4rem;
+$header-logo-icon-size-xxs: 3.6rem;
+
+$header-nav-gap: $spacing-xxxl;
+$header-nav-gap-lg-screen: $spacing-xl;
+$header-nav-gap-md-screen: 0;
+
+$header-nav-link-padding-y: $spacing-smd;
+$header-nav-link-padding-y-md-screen: $spacing-xlg;
+$header-nav-link-padding-y-sm-screen: $spacing-md;
+
+$header-nav-arrow-margin-left: $spacing-sm;
+
+$header-mobile-nav-width: 80%;
+$header-mobile-nav-max-width: 32rem;
+$header-mobile-nav-padding-top: $spacing-xxxxl;
+$header-mobile-nav-padding-x: $spacing-xxxl;
+$header-mobile-nav-padding-bottom: $spacing-xxxl;
+$header-mobile-nav-item-border-width: $border-width-sm;
+$header-mobile-nav-link-hover-underline-width: 30%;
+
+$header-social-margin-top: $spacing-xxl;
+$header-social-gap: $spacing-xl;
+$header-social-gap-sm-screen: $spacing-lg;
+
+$header-right-gap: $spacing-xl;
+$header-right-gap-md-screen: $spacing-lg;
+
+$header-call-text-font-size: $font-size-md-alt;
+$header-call-number-font-size: $font-size-xlg;
+
+$header-book-btn-padding-y-lg-screen: $spacing-smd;
+$header-book-btn-padding-x-lg-screen: $spacing-xl;
+
+$header-search-icon-font-size: $font-size-smd;
+$header-search-icon-font-size-sm-screen: $font-size-xlg;
+
+$header-mobile-toggle-height: 2.4rem;
+$header-mobile-toggle-width: 3rem;
+$header-mobile-toggle-bar-height: 0.3rem;
+$header-mobile-toggle-bar-radius: $spacing-sm;
+
+$header-close-button-position: $spacing-xl;
+
+// Loader
+$loader-bg-color: $color-footer-bg;
+$loader-text-font-size: 3rem;
+$loader-text-letter-spacing: 0.1rem;
+$loader-progress-width: 20rem;
+$loader-progress-height: 3px;
+$loader-progress-bg-color: $color-border-light-alpha;
+$loader-progress-border-radius: 3px;
+$loader-animation-text-fade-duration: 2s;
+$loader-animation-text-fade-delay-step: 0.15s;
+$loader-text-animation-transform-y: -5px;
+
+// Stats Counter
+$stats-padding-y: 70px;
+$stats-container-padding-x: $spacing-md-lg;
+$stats-grid-gap: $spacing-md-lg;
+$stats-grid-gap-lg: $spacing-smd + $spacing-xxs;
+
+$stats-item-height: 280px;
+$stats-item-height-lg: 260px;
+$stats-item-height-md: 240px;
+$stats-item-height-sm: 220px;
+$stats-item-height-xs: 200px;
+
+$stats-item-padding-y: $spacing-lg + $spacing-xxs;
+$stats-item-padding-x: $spacing-md-lg;
+$stats-item-padding-y-lg: $spacing-md-lg;
+$stats-item-padding-x-lg: $spacing-smd + $spacing-xxs;
+$stats-item-padding-y-xs: $spacing-md-lg;
+$stats-item-padding-x-xs: $spacing-smd + $spacing-xxs;
+
+$stats-item-corner-size: 20px;
+$stats-item-corner-size-hover: 25px;
+$stats-icon-margin-bottom: $spacing-smd + $spacing-xxs;
+$stats-icon-size: 50px;
+$stats-icon-size-md: 45px;
+$stats-icon-size-sm: 40px;
+
+$stats-number-margin-bottom: $spacing-sm + $spacing-xxs;
+
+// Services Highlight / Banner & Features
+$services-highlight-padding-bottom: $spacing-xxxxl;
+$services-highlight-padding-bottom-md: $spacing-xxxl;
+$services-container-padding-x: $spacing-xl;
+
+$services-banner-margin-bottom: $spacing-xxxxl;
+$services-banner-margin-bottom-md: $spacing-xxxl;
+
+$banner-content-padding-y: $spacing-xxxl;
+$banner-content-padding-x: $spacing-xxl;
+$banner-content-padding-y-md: $spacing-xxl;
+$banner-content-padding-x-md: $spacing-xxxl;
+$banner-content-padding-y-sm: $spacing-xl;
+$banner-content-padding-x-sm: $spacing-xxl;
+
+$banner-subtitle-line-width: 7rem;
+$banner-subtitle-line-margin-right: $spacing-lg;
+$banner-subtitle-margin-bottom: $spacing-xxl;
+$banner-title-margin-bottom: $spacing-xxxl;
+$banner-description-margin-bottom: $spacing-xl * 1.25;
+$banner-description-max-width: 90%;
+$banner-cta-padding-y: $spacing-smd;
+$banner-cta-line-bottom: $spacing-sm;
+$banner-cta-line-height: 1px;
+$banner-content-left-border-width-md: $spacing-xs;
+
+$services-features-gap: $spacing-xl * 1.25;
+$services-features-gap-row-lg: $spacing-xxl;
+$services-features-gap-column-lg: $spacing-xxxl;
+
+$feature-icon-height: $spacing-xxxl;
+$feature-icon-margin-bottom: $spacing-xxl;
+$feature-title-margin-bottom: $spacing-lg;
+
+$filter-feature-icon: brightness(0) invert(0.9) sepia(0.3) saturate(2)
+  hue-rotate(330deg);
+
+// About Page
+$page-padding-top-xl: 12rem;
+$page-padding-top-lg: 10rem;
+$page-padding-top-md: 8rem;
+$page-padding-top-sm: 6rem;
+
+$about-wrapper-gap: 50px;
+$about-wrapper-gap-lg: 40px;
+$about-wrapper-gap-md: 30px;
+
+$about-wrapper-padding-bottom-xl: 100px;
+$about-wrapper-padding-bottom-lg: 80px;
+$about-wrapper-padding-bottom-md: 70px;
+$about-wrapper-padding-bottom-sm: 60px;
+$about-wrapper-padding-bottom-xs: 50px;
+
+$about-images-gap: 30px;
+$about-images-gap-lg: 20px;
+$about-images-gap-md: 25px;
+
+$about-image-primary-border-width: 2px;
+$about-image-secondary-line-height: 6px;
+$about-image-secondary-line-height-md: 5px;
+$about-image-secondary-line-height-sm: 4px;
+
+$about-content-padding: 20px;
+$about-content-padding-y-md: 10px;
+$about-content-padding-x-md: 15px;
+
+$about-section-heading-margin-bottom: 30px;
+$about-service-tag-padding-left: 60px;
+$about-service-tag-padding-left-md: 50px;
+$about-service-tag-padding-left-sm: 40px;
+$about-service-tag-margin-bottom: 15px;
+$about-service-tag-line-width: 40px;
+$about-service-tag-line-width-md: 30px;
+$about-service-tag-line-width-sm: 20px;
+
+$about-image-primary-width: 290px;
+$about-image-primary-height: 574px;
+$about-image-primary-width-lg: 260px;
+$about-image-primary-height-lg: 520px;
+$about-image-primary-width-md: 240px;
+$about-image-primary-height-md: 480px;
+$about-image-primary-width-sm: 220px;
+$about-image-primary-height-sm: 440px;
+$about-image-primary-width-xs-max: 280px;
+$about-image-primary-height-xs: 400px;
+$about-image-primary-height-xxs: 380px;
+
+$about-image-secondary-width: 260px;
+$about-image-secondary-height: 560px;
+$about-image-secondary-width-lg: 230px;
+$about-image-secondary-height-lg: 500px;
+$about-image-secondary-width-md: 210px;
+$about-image-secondary-height-md: 460px;
+$about-image-secondary-width-sm: 190px;
+$about-image-secondary-height-sm: 420px;
+$about-image-secondary-width-xs-max: 240px;
+$about-image-secondary-height-xs: 360px;
+$about-image-secondary-height-xxs: 340px;
+
+$about-description-margin-bottom: 30px;
+$about-description-margin-bottom-md: 25px;
+$about-description-margin-bottom-sm: 20px;
+$about-description-max-width-md: 90%;
+
+$about-feature-list-gap-y-md: 10px;
+$about-feature-list-gap-x-md: 30px;
+$about-feature-list-gap-sm: 15px;
+$about-feature-list-item-margin-bottom: 15px;
+$about-arrow-margin-right: 10px;
+
+// Contact Page
+$contact-section-padding-y: $spacing-xxxxl;
+$contact-section-padding-y-lg: 7rem;
+$contact-section-padding-y-md: 6rem;
+$contact-section-padding-y-xs: 5rem;
+$contact-container-padding-x: $spacing-xl;
+$contact-wrapper-gap: $spacing-xxl;
+$contact-wrapper-gap-lg: $spacing-xl; // Also for 992px
+
+$contact-title-margin-bottom: $spacing-xl;
+$contact-title-margin-bottom-md: 3.5rem;
+$contact-title-margin-bottom-xs: 3rem;
+
+$contact-form-row-gap: $spacing-xxl;
+$contact-form-row-gap-md: 0;
+$contact-form-row-margin-bottom: $spacing-xxl;
+$contact-form-group-margin-bottom: $spacing-xl;
+$contact-form-control-padding-y: $font-size-lg-alt;
+$contact-form-control-padding-x: $spacing-xl;
+$contact-form-control-padding-xs: 1.4rem 1.6rem;
+$contact-textarea-height: 15rem;
+$contact-form-submit-margin-top: $spacing-xl;
+$contact-submit-btn-padding: 1.5rem 3rem;
+$contact-submit-btn-padding-xs: 1.4rem 0;
+
+$contact-person-section-margin-bottom: $spacing-xxxl;
+$contact-person-image-size: 18rem;
+$contact-person-image-size-lg: 15rem;
+$contact-person-image-margin-bottom: $spacing-xxl;
+$contact-person-name-margin-bottom: $spacing-sm;
+$contact-person-title-padding-bottom: $spacing-md;
+$contact-person-title-underline-width: $spacing-xl;
+$contact-person-title-underline-height: 1px;
+$contact-info-text-padding-x: $spacing-xl;
+
+$contact-error-message-margin-top: $spacing-sm;
+$contact-error-message-min-height: 1.2rem;
+$contact-form-focus-line-height: 1px;
+
+// Hero Section
+$hero-height: 90vh;
+$hero-content-left: 10%;
+$hero-content-width: 60%;
+$hero-text-color: $color-top-bar-text; // #e0e0e0, same as top bar text
+$hero-welcome-font-size: $font-size-lg; // 1.5rem
+$hero-welcome-font-size-sm: 1.2rem; // for 950px & 768px
+$hero-welcome-margin-bottom: $spacing-md; // 1rem
+$hero-title-font-size: 7.2rem;
+$hero-title-font-size-950: 6rem;
+$hero-title-font-size-768: 5.5rem;
+$hero-title-font-size-660: 5rem;
+$hero-title-font-size-570: 4.5rem;
+$hero-title-font-size-480: 4rem;
+$hero-title-font-size-375: 3rem;
+$hero-title-font-weight: $font-weight-light; // Assuming 100 is light
+$hero-title-margin-bottom: $spacing-xl; // 2rem
+$hero-title-line-height: 1.2;
+$hero-btn-padding: $spacing-md $spacing-xl; // 1rem 2rem
+$hero-btn-bg: rgba($color-text-light, 0.95);
+$hero-btn-text-color: $color-text-dark;
+$hero-btn-font-weight: $font-weight-semibold; // Assuming 600 is semibold
+$hero-btn-border-radius: $border-radius-sm;
+$hero-btn-box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+$hero-btn-hover-bg: $color-text-dark;
+$hero-btn-hover-text-color: $color-text-light;
+$hero-btn-hover-transform: translateY(-5px);
+$hero-btn-hover-box-shadow: 0 7px 25px rgba(0, 0, 0, 0.25);
+$hero-slide-transition-duration: 0.8s;
+$hero-slide-overlay-gradient: linear-gradient(
+  to right,
+  rgba(0, 0, 0, 0.7),
+  rgba(0, 0, 0, 0.3)
+);
+$hero-animation-delay-welcome: 0.4s;
+$hero-animation-delay-title: 0.7s;
+$hero-animation-delay-btn: 1s;
+$hero-animation-translateY-start: 20px;
+$hero-progress-bottom: $spacing-xxl; // 40px
+$hero-progress-gap: 18px;
+$hero-progress-dot-size: 12px;
+$hero-progress-dot-inner-size: 6px;
+$hero-progress-dot-bg: rgba($color-text-light, 0.4);
+$hero-progress-dot-hover-bg: rgba($color-text-light, 0.6);
+$hero-progress-dot-active-bg: rgba($color-text-light, 0.2);
+$hero-progress-dot-inner-bg: $color-text-light;
+$hero-progress-dot-transition-duration: $transition-speed-medium;
+$hero-progress-dot-hover-scale: 1.2;
+$hero-progress-dot-active-scale: 1.2;
+$hero-progress-dot-active-before-scale: 1.8;
+$hero-slide-bg-zoom-duration: 12s;
+$hero-slide-transform-transition-duration: 1.5s;
+$hero-z-index-slide: 1;
+$hero-z-index-slide-active: 2;
+$hero-z-index-content: 3;
+$hero-z-index-progress: 10;
+$hero-btn-transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+// Services Page
+$services-section-padding-top: 10rem;
+$services-section-padding-bottom: 20rem;
+$services-bg-overlay-opacity: 0.1;
+$services-container-padding-x: $spacing-xl; // 2rem
+$services-container-padding-x-xl-screen: $spacing-lg-xl; // 3rem
+$services-container-padding-x-sm-screen: $spacing-xl; // 2rem
+
+$services-title-font-size: 3.6rem;
+$services-title-font-size-lg: 3.2rem;
+$services-title-font-size-md: 3rem;
+$services-title-font-size-xs: 2.6rem;
+$services-title-font-weight: $font-weight-light;
+$services-title-color: $color-text-default;
+$services-title-margin-bottom: 7rem;
+$services-title-margin-bottom-lg: 6rem;
+$services-title-margin-bottom-md: 5rem;
+$services-title-margin-bottom-xs: 4rem;
+$services-title-letter-spacing-xs: 0.1rem;
+$services-title-underline-width: 12rem;
+$services-title-underline-height: 0.1rem;
+$services-title-underline-color: $color-gold;
+$services-title-underline-margin-top: $spacing-xl; // 2rem
+$services-title-underline-width-md: 3.5rem;
+$services-title-underline-margin-top-md: $spacing-smd; // 1.5rem
+$services-title-underline-width-xs: 3rem;
+$services-title-underline-margin-top-xs: 1.2rem; // approx $spacing-smd * 0.8
+
+$services-grid-gap: $spacing-lg-xl; // 3rem
+$services-grid-gap-lg: $spacing-xxxl; // 6rem (for single column)
+
+$service-card-transition-duration: 0.7s;
+$service-card-translateX-start: 50px;
+$service-card-delay-child-1: 0.1s;
+$service-card-delay-child-2: 0.3s;
+$service-card-delay-child-3: 0.5s;
+$service-card-hover-image-scale: 1.05;
+$service-card-hover-image-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+$service-card-content-bg: rgba(
+  $color-about-accent,
+  0.1
+); // Using $color-about-accent for #dbc8ac base
+$service-card-content-hover-bg: rgba($color-about-accent, 0.18);
+$service-card-content-padding: 4rem 3rem;
+$service-card-content-padding-lg: 3.5rem 2.5rem;
+$service-card-content-padding-md: 3rem 2rem;
+$service-card-content-min-height: 32rem;
+$service-card-content-min-height-lg: 28rem;
+$service-card-content-min-height-sm: 26rem;
+$service-card-border-radius: $spacing-sm; // 0.5rem
+$service-card-content-transition-duration: $transition-speed-fast;
+
+$service-image-container-size: 18.9rem;
+$service-image-container-size-lg: 17rem;
+$service-image-container-size-md: 16rem;
+$service-image-container-size-xs: 15rem;
+$service-image-container-transition-duration: $transition-speed-medium-alt;
+
+$service-image-dashed-border-size: 24rem;
+$service-image-dashed-border-size-lg: 22rem;
+$service-image-dashed-border-size-md: 20rem;
+$service-image-dashed-border-size-xs: 19rem;
+$service-image-dashed-border-width: $border-width-sm; // 0.1rem
+$service-image-dashed-border-color: #6b6b6b; // New color, consider adding to palette if used elsewhere
+$service-image-dashed-border-hover-color: $color-about-accent;
+$service-image-dashed-border-transition-duration: $transition-speed-medium-alt;
+
+$service-image-circle-bg: #ccc; // Neutral placeholder, consider $color-background-light-gray or similar
+$service-image-circle-img-hover-scale: 1.1;
+
+$service-text-title-font-size: 2.2rem;
+$service-text-title-font-size-lg: 2.1rem;
+$service-text-title-font-size-md: 2rem;
+$service-text-title-font-size-xs: 1.9rem;
+$service-text-title-color: $color-text-default;
+$service-text-title-font-weight: $font-weight-light;
+$service-text-title-letter-spacing: 0.1rem;
+$service-text-title-margin-top: $spacing-xxl; // 4rem
+$service-text-title-margin-top-lg: 3.5rem;
+$service-text-title-margin-top-md: 3rem;
+$service-text-title-margin-top-xs: 2.5rem;
+
+$service-description-font-size: $font-size-lg-alt; // 1.6rem
+$service-description-font-size-lg: $font-size-lg; // 1.5rem
+$service-description-font-size-xs: $font-size-md-alt; // 1.4rem
+$service-description-color: $color-text-default;
+$service-description-line-height: 1.8;
+$service-description-line-height-lg: 1.7;
+$service-description-line-height-xs: 1.6;
+$service-description-font-weight: $font-weight-light;
+$service-description-margin-top: $spacing-smd; // 1.5rem
+$service-description-margin-bottom: -$spacing-xl; // -2rem

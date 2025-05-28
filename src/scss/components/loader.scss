@@ -9,7 +9,7 @@ body.loaded {
 /* Hide all page content initially */
 .page-content {
   opacity: 0;
-  transition: opacity 0.5s ease;
+  transition: opacity $transition-speed-medium $transition-easing-default;
 }
 
 body.loaded .page-content {
@@ -23,68 +23,57 @@ body.loaded .page-content {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #3c3c4d;
+  background-color: $loader-bg-color;
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 9999;
-  transition: opacity 0.5s ease, visibility 0.5s ease;
+  z-index: $z-index-loader;
+  transition: opacity $transition-speed-medium $transition-easing-default,
+    visibility $transition-speed-medium $transition-easing-default;
 
   &__content {
     text-align: center;
   }
 
   &__text {
-    margin-bottom: 2rem;
+    margin-bottom: $spacing-xl;
 
     span {
       display: inline-block;
-      color: #fff;
-      font-size: 3rem;
-      font-weight: 300;
-      font-family: "Rossa";
-      letter-spacing: 0.1rem;
-      animation: textFade 2s infinite;
+      color: $color-text-light;
+      font-size: $loader-text-font-size;
+      font-weight: $font-weight-light;
+      font-family: $font-rossa;
+      letter-spacing: $loader-text-letter-spacing;
+      animation: textFade $loader-animation-text-fade-duration infinite;
 
       @for $i from 1 through 8 {
         &:nth-child(#{$i}) {
-          animation-delay: $i * 0.15s;
+          animation-delay: $i * $loader-animation-text-fade-delay-step;
         }
       }
     }
   }
 
   &__progress {
-    width: 20rem;
-    height: 3px;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 3px;
+    width: $loader-progress-width;
+    height: $loader-progress-height;
+    background-color: $loader-progress-bg-color;
+    border-radius: $loader-progress-border-radius;
     overflow: hidden;
     margin: 0 auto;
 
     &-bar {
       height: 100%;
       width: 0%;
-      background-color: #deb887;
-      border-radius: 3px;
-      transition: width 0.5s ease;
+      background-color: $color-gold;
+      border-radius: $loader-progress-border-radius;
+      transition: width $transition-speed-medium $transition-easing-default;
     }
   }
 
   &.hidden {
     opacity: 0;
     visibility: hidden;
-  }
-}
-
-@keyframes textFade {
-  0%,
-  100% {
-    opacity: 0.3;
-    transform: translateY(0);
-  }
-  50% {
-    opacity: 1;
-    transform: translateY(-5px);
   }
 }
