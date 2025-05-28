@@ -32,24 +32,16 @@ src/
 
    ```bash
    git clone https://github.com/jchiwaii/kanga.git
-   cd kanga
    ```
 
-2. Install dependencies:
+2. Open `index.html` in your browser to view the website.
 
-   ```bash
-   npm install
-   ```
+## Development
 
-3. Run the development server:
-   ```bash
-   npm start
-   ```
+The project uses:
 
-## Building for Production
+- Plain HTML for structure
+- SCSS for styling (compiled to CSS)
+- Vanilla JavaScript for interactivity
 
-```bash
-npm run build
-```
-
-The built files will be in the `dist` directory.
+No build tools or package managers required - just clone and run!
